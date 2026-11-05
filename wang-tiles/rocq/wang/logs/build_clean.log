@@ -1,0 +1,755 @@
+certificate files match SHA256SUMS
+generated files match n7/MANIFEST.sha256
+make_n7.sh: 4.44 s 118160 KB
+coq_makefile -f _CoqProject -o Makefile.coq
+make[1]: Entering directory '/home/ubuntu/lanes/wang/clean'
+COQDEP VFILES
+COQC WangTiles_Statement.v
+COQC n7/Wang7_Prefixes.v
+WangTiles_Statement.vo (real: 0.33, user: 0.16, sys: 0.16, mem: 291576 ko)
+COQNATIVE WangTiles_Statement.vo
+WangTiles_Statement.vo.native (real: 0.27, user: 0.19, sys: 0.08, mem: 86340 ko)
+COQC Wang_Rel.v
+COQC Wang_Champions_Data.v
+Wang_Champions_Data.vo (real: 0.36, user: 0.18, sys: 0.18, mem: 348200 ko)
+COQNATIVE Wang_Champions_Data.vo
+Wang_Rel.vo (real: 0.51, user: 0.28, sys: 0.23, mem: 406908 ko)
+COQNATIVE Wang_Rel.vo
+Wang_Champions_Data.vo.native (real: 0.23, user: 0.16, sys: 0.07, mem: 86300 ko)
+Wang_Rel.vo.native (real: 0.30, user: 0.21, sys: 0.08, mem: 86096 ko)
+COQC Wang_Refute.v
+Wang_Refute.vo (real: 0.67, user: 0.47, sys: 0.20, mem: 416556 ko)
+COQNATIVE Wang_Refute.vo
+n7/Wang7_Prefixes.vo (real: 2.61, user: 2.36, sys: 0.24, mem: 414376 ko)
+COQNATIVE n7/Wang7_Prefixes.vo
+Wang_Refute.vo.native (real: 0.61, user: 0.49, sys: 0.11, mem: 90524 ko)
+COQC Wang_Checker.v
+n7/Wang7_Prefixes.vo.native (real: 0.22, user: 0.14, sys: 0.07, mem: 74508 ko)
+Wang_Checker.vo (real: 0.59, user: 0.35, sys: 0.23, mem: 416388 ko)
+COQNATIVE Wang_Checker.vo
+Wang_Checker.vo.native (real: 1.32, user: 1.12, sys: 0.19, mem: 109224 ko)
+COQC Wang_Geom.v
+COQC Wang_Canon.v
+COQC Cert_n5_D7.v
+COQC Cert_n6_D9.v
+COQC n7/Cert7_s000.v
+COQC n7/Cert7_s002.v
+COQC n7/Cert7_s042.v
+COQC n7/Cert7_s040.v
+COQC n7/Cert7_s010.v
+COQC n7/Cert7_s014.v
+COQC n7/Cert7_s039.v
+COQC n7/Cert7_s008.v
+COQC n7/Cert7_s041.v
+COQC n7/Cert7_s030.v
+COQC n7/Cert7_s009.v
+COQC n7/Cert7_s028.v
+COQC n7/Cert7_s037.v
+COQC n7/Cert7_s034.v
+COQC n7/Cert7_s063.v
+COQC n7/Cert7_s012.v
+Wang_Canon.vo (real: 0.70, user: 0.45, sys: 0.24, mem: 418720 ko)
+COQNATIVE Wang_Canon.vo
+Wang_Canon.vo.native (real: 0.35, user: 0.24, sys: 0.10, mem: 91824 ko)
+COQC n7/Cert7_s038.v
+Wang_Geom.vo (real: 1.13, user: 0.89, sys: 0.24, mem: 425440 ko)
+COQNATIVE Wang_Geom.vo
+Cert_n5_D7.vo (real: 1.14, user: 0.90, sys: 0.23, mem: 436608 ko)
+COQNATIVE Cert_n5_D7.vo
+Cert_n5_D7.vo.native (real: 0.29, user: 0.20, sys: 0.08, mem: 97468 ko)
+COQC n7/Cert7_s043.v
+Wang_Geom.vo.native (real: 0.34, user: 0.25, sys: 0.09, mem: 91900 ko)
+COQC n7/Cert7_s050.v
+Cert_n6_D9.vo (real: 19.81, user: 19.18, sys: 0.63, mem: 1090688 ko)
+COQNATIVE Cert_n6_D9.vo
+Cert_n6_D9.vo.native (real: 1.01, user: 0.80, sys: 0.19, mem: 216600 ko)
+COQC n7/Cert7_s048.v
+n7/Cert7_s028.vo (real: 38.70, user: 37.75, sys: 0.93, mem: 1681636 ko)
+COQNATIVE n7/Cert7_s028.vo
+n7/Cert7_s009.vo (real: 38.87, user: 37.91, sys: 0.95, mem: 1662440 ko)
+COQNATIVE n7/Cert7_s009.vo
+n7/Cert7_s002.vo (real: 39.20, user: 38.28, sys: 0.86, mem: 1572524 ko)
+COQNATIVE n7/Cert7_s002.vo
+n7/Cert7_s009.vo.native (real: 2.23, user: 1.47, sys: 0.35, mem: 348132 ko)
+COQC n7/Cert7_s045.v
+n7/Cert7_s028.vo.native (real: 2.43, user: 1.48, sys: 0.36, mem: 343600 ko)
+COQC n7/Cert7_s006.v
+n7/Cert7_s002.vo.native (real: 2.15, user: 1.41, sys: 0.33, mem: 342340 ko)
+COQC n7/Cert7_s020.v
+n7/Cert7_s010.vo (real: 41.43, user: 40.47, sys: 0.95, mem: 1658528 ko)
+COQNATIVE n7/Cert7_s010.vo
+n7/Cert7_s008.vo (real: 41.50, user: 40.52, sys: 0.97, mem: 1676848 ko)
+COQNATIVE n7/Cert7_s008.vo
+n7/Cert7_s063.vo (real: 42.06, user: 41.07, sys: 0.96, mem: 1669716 ko)
+COQNATIVE n7/Cert7_s063.vo
+n7/Cert7_s008.vo.native (real: 2.35, user: 1.50, sys: 0.36, mem: 361280 ko)
+COQC n7/Cert7_s047.v
+n7/Cert7_s010.vo.native (real: 2.43, user: 1.52, sys: 0.38, mem: 365024 ko)
+COQC n7/Cert7_s004.v
+n7/Cert7_s063.vo.native (real: 2.26, user: 1.50, sys: 0.41, mem: 367052 ko)
+COQC n7/Cert7_s013.v
+n7/Cert7_s000.vo (real: 45.46, user: 44.41, sys: 1.04, mem: 1824512 ko)
+COQNATIVE n7/Cert7_s000.vo
+n7/Cert7_s050.vo (real: 45.96, user: 44.88, sys: 1.08, mem: 1827100 ko)
+COQNATIVE n7/Cert7_s050.vo
+n7/Cert7_s000.vo.native (real: 2.07, user: 1.65, sys: 0.41, mem: 384680 ko)
+COQC n7/Cert7_s011.v
+n7/Cert7_s012.vo (real: 48.97, user: 47.80, sys: 1.10, mem: 1930280 ko)
+COQNATIVE n7/Cert7_s012.vo
+n7/Cert7_s050.vo.native (real: 2.11, user: 1.66, sys: 0.43, mem: 388476 ko)
+COQC n7/Cert7_s017.v
+n7/Cert7_s012.vo.native (real: 2.25, user: 1.76, sys: 0.46, mem: 411424 ko)
+COQC n7/Cert7_s007.v
+n7/Cert7_s014.vo (real: 52.19, user: 50.92, sys: 1.25, mem: 2045552 ko)
+COQNATIVE n7/Cert7_s014.vo
+n7/Cert7_s030.vo (real: 54.19, user: 52.98, sys: 1.16, mem: 1966196 ko)
+COQNATIVE n7/Cert7_s030.vo
+n7/Cert7_s014.vo.native (real: 2.96, user: 1.90, sys: 0.46, mem: 432080 ko)
+COQC n7/Cert7_s003.v
+n7/Cert7_s043.vo (real: 54.52, user: 53.29, sys: 1.22, mem: 2053220 ko)
+COQNATIVE n7/Cert7_s043.vo
+n7/Cert7_s041.vo (real: 56.13, user: 54.86, sys: 1.26, mem: 2125012 ko)
+COQNATIVE n7/Cert7_s041.vo
+n7/Cert7_s034.vo (real: 56.54, user: 55.32, sys: 1.21, mem: 2138840 ko)
+COQNATIVE n7/Cert7_s034.vo
+n7/Cert7_s030.vo.native (real: 2.96, user: 1.88, sys: 0.47, mem: 425784 ko)
+COQC n7/Cert7_s035.v
+n7/Cert7_s043.vo.native (real: 2.41, user: 1.90, sys: 0.49, mem: 428288 ko)
+COQC n7/Cert7_s026.v
+n7/Cert7_s041.vo.native (real: 2.49, user: 1.98, sys: 0.49, mem: 443064 ko)
+COQC n7/Cert7_s015.v
+n7/Cert7_s034.vo.native (real: 2.48, user: 1.96, sys: 0.50, mem: 449620 ko)
+COQC n7/Cert7_s046.v
+n7/Cert7_s039.vo (real: 59.59, user: 58.23, sys: 1.35, mem: 2279560 ko)
+COQNATIVE n7/Cert7_s039.vo
+n7/Cert7_s037.vo (real: 60.60, user: 59.23, sys: 1.34, mem: 2252864 ko)
+COQNATIVE n7/Cert7_s037.vo
+n7/Cert7_s039.vo.native (real: 2.61, user: 2.08, sys: 0.50, mem: 454708 ko)
+COQC n7/Cert7_s053.v
+n7/Cert7_s037.vo.native (real: 2.62, user: 2.08, sys: 0.52, mem: 467360 ko)
+COQC n7/Cert7_s022.v
+n7/Cert7_s038.vo (real: 65.01, user: 63.59, sys: 1.42, mem: 2269840 ko)
+COQNATIVE n7/Cert7_s038.vo
+n7/Cert7_s038.vo.native (real: 2.94, user: 2.33, sys: 0.56, mem: 486672 ko)
+COQC n7/Cert7_s023.v
+n7/Cert7_s048.vo (real: 48.41, user: 47.30, sys: 1.10, mem: 1922368 ko)
+COQNATIVE n7/Cert7_s048.vo
+n7/Cert7_s040.vo (real: 69.41, user: 67.96, sys: 1.42, mem: 2355932 ko)
+COQNATIVE n7/Cert7_s040.vo
+n7/Cert7_s048.vo.native (real: 2.24, user: 1.76, sys: 0.45, mem: 404820 ko)
+COQC n7/Cert7_s001.v
+n7/Cert7_s040.vo.native (real: 3.02, user: 2.39, sys: 0.60, mem: 508520 ko)
+COQC n7/Cert7_s044.v
+n7/Cert7_s042.vo (real: 81.59, user: 79.98, sys: 1.59, mem: 2639932 ko)
+COQNATIVE n7/Cert7_s042.vo
+n7/Cert7_s042.vo.native (real: 3.94, user: 2.71, sys: 0.66, mem: 553908 ko)
+COQC n7/Cert7_s036.v
+n7/Cert7_s004.vo (real: 42.49, user: 41.44, sys: 1.03, mem: 1678084 ko)
+COQNATIVE n7/Cert7_s004.vo
+n7/Cert7_s006.vo (real: 46.95, user: 45.92, sys: 1.03, mem: 1853544 ko)
+COQNATIVE n7/Cert7_s006.vo
+n7/Cert7_s004.vo.native (real: 2.32, user: 1.52, sys: 0.37, mem: 361156 ko)
+COQC n7/Cert7_s029.v
+n7/Cert7_s006.vo.native (real: 2.61, user: 1.73, sys: 0.44, mem: 391556 ko)
+COQC n7/Cert7_s025.v
+n7/Cert7_s047.vo (real: 48.37, user: 47.28, sys: 1.08, mem: 1834652 ko)
+COQNATIVE n7/Cert7_s047.vo
+n7/Cert7_s011.vo (real: 45.82, user: 44.73, sys: 1.07, mem: 1819236 ko)
+COQNATIVE n7/Cert7_s011.vo
+n7/Cert7_s047.vo.native (real: 2.55, user: 1.74, sys: 0.43, mem: 400580 ko)
+COQC n7/Cert7_s024.v
+n7/Cert7_s011.vo.native (real: 2.53, user: 1.70, sys: 0.42, mem: 390052 ko)
+COQC n7/Cert7_s062.v
+n7/Cert7_s045.vo (real: 54.79, user: 53.52, sys: 1.26, mem: 2053740 ko)
+COQNATIVE n7/Cert7_s045.vo
+n7/Cert7_s003.vo (real: 41.11, user: 40.10, sys: 1.00, mem: 1676500 ko)
+COQNATIVE n7/Cert7_s003.vo
+n7/Cert7_s020.vo (real: 54.98, user: 53.70, sys: 1.27, mem: 2091104 ko)
+COQNATIVE n7/Cert7_s020.vo
+n7/Cert7_s017.vo (real: 46.85, user: 45.68, sys: 1.11, mem: 1852352 ko)
+COQNATIVE n7/Cert7_s017.vo
+n7/Cert7_s007.vo (real: 46.46, user: 45.33, sys: 1.11, mem: 1820932 ko)
+COQNATIVE n7/Cert7_s007.vo
+n7/Cert7_s013.vo (real: 53.53, user: 52.28, sys: 1.24, mem: 2047088 ko)
+COQNATIVE n7/Cert7_s013.vo
+n7/Cert7_s003.vo.native (real: 1.92, user: 1.50, sys: 0.39, mem: 357488 ko)
+COQC n7/Cert7_s027.v
+n7/Cert7_s045.vo.native (real: 2.47, user: 1.96, sys: 0.48, mem: 424748 ko)
+COQC n7/Cert7_s032.v
+n7/Cert7_s017.vo.native (real: 2.19, user: 1.73, sys: 0.45, mem: 398284 ko)
+COQC n7/Cert7_s049.v
+n7/Cert7_s020.vo.native (real: 2.42, user: 1.93, sys: 0.48, mem: 435012 ko)
+COQC n7/Cert7_s021.v
+n7/Cert7_s007.vo.native (real: 2.12, user: 1.66, sys: 0.45, mem: 391340 ko)
+COQC n7/Cert7_s033.v
+n7/Cert7_s013.vo.native (real: 2.46, user: 1.96, sys: 0.48, mem: 439908 ko)
+COQC n7/Cert7_s019.v
+n7/Cert7_s026.vo (real: 45.42, user: 44.38, sys: 1.03, mem: 1732272 ko)
+COQNATIVE n7/Cert7_s026.vo
+n7/Cert7_s015.vo (real: 45.35, user: 44.29, sys: 1.04, mem: 1789600 ko)
+COQNATIVE n7/Cert7_s015.vo
+n7/Cert7_s026.vo.native (real: 2.53, user: 1.64, sys: 0.38, mem: 379748 ko)
+COQC n7/Cert7_s018.v
+n7/Cert7_s015.vo.native (real: 2.53, user: 1.66, sys: 0.41, mem: 383292 ko)
+COQC n7/Cert7_s061.v
+n7/Cert7_s053.vo (real: 45.25, user: 44.21, sys: 1.04, mem: 1785648 ko)
+COQNATIVE n7/Cert7_s053.vo
+n7/Cert7_s046.vo (real: 49.23, user: 48.05, sys: 1.16, mem: 1898184 ko)
+COQNATIVE n7/Cert7_s046.vo
+n7/Cert7_s035.vo (real: 51.47, user: 50.27, sys: 1.19, mem: 1979008 ko)
+COQNATIVE n7/Cert7_s035.vo
+n7/Cert7_s053.vo.native (real: 2.11, user: 1.67, sys: 0.42, mem: 386180 ko)
+COQC n7/Cert7_s056.v
+n7/Cert7_s046.vo.native (real: 2.25, user: 1.80, sys: 0.43, mem: 403872 ko)
+COQC n7/Cert7_s016.v
+n7/Cert7_s035.vo.native (real: 2.33, user: 1.88, sys: 0.43, mem: 422584 ko)
+COQC n7/Cert7_s005.v
+n7/Cert7_s001.vo (real: 39.85, user: 38.81, sys: 1.01, mem: 1710036 ko)
+COQNATIVE n7/Cert7_s001.vo
+n7/Cert7_s001.vo.native (real: 1.77, user: 1.42, sys: 0.33, mem: 343144 ko)
+COQC n7/Cert7_s055.v
+n7/Cert7_s022.vo (real: 52.94, user: 51.72, sys: 1.19, mem: 1978880 ko)
+COQNATIVE n7/Cert7_s022.vo
+n7/Cert7_s023.vo (real: 47.70, user: 46.54, sys: 1.11, mem: 1856644 ko)
+COQNATIVE n7/Cert7_s023.vo
+n7/Cert7_s022.vo.native (real: 2.39, user: 1.88, sys: 0.47, mem: 426952 ko)
+COQC n7/Cert7_s057.v
+n7/Cert7_s023.vo.native (real: 2.14, user: 1.68, sys: 0.45, mem: 392008 ko)
+COQC n7/Cert7_s059.v
+n7/Cert7_s044.vo (real: 55.29, user: 54.05, sys: 1.19, mem: 2050364 ko)
+COQNATIVE n7/Cert7_s044.vo
+n7/Cert7_s029.vo (real: 40.20, user: 39.16, sys: 1.02, mem: 1690668 ko)
+COQNATIVE n7/Cert7_s029.vo
+n7/Cert7_s044.vo.native (real: 2.83, user: 1.93, sys: 0.46, mem: 432288 ko)
+COQC n7/Cert7_s052.v
+n7/Cert7_s029.vo.native (real: 2.20, user: 1.48, sys: 0.35, mem: 355140 ko)
+COQC n7/Cert7_s051.v
+n7/Cert7_s025.vo (real: 43.94, user: 42.86, sys: 1.06, mem: 1780152 ko)
+COQNATIVE n7/Cert7_s025.vo
+n7/Cert7_s025.vo.native (real: 2.47, user: 1.62, sys: 0.36, mem: 379156 ko)
+COQC n7/Cert7_s058.v
+n7/Cert7_s036.vo (real: 52.17, user: 50.86, sys: 1.26, mem: 2009352 ko)
+COQNATIVE n7/Cert7_s036.vo
+n7/Cert7_s027.vo (real: 40.29, user: 39.27, sys: 1.01, mem: 1678012 ko)
+COQNATIVE n7/Cert7_s027.vo
+n7/Cert7_s062.vo (real: 42.99, user: 41.94, sys: 1.03, mem: 1684904 ko)
+COQNATIVE n7/Cert7_s062.vo
+n7/Cert7_s036.vo.native (real: 2.92, user: 1.88, sys: 0.52, mem: 427960 ko)
+COQC n7/Cert7_s060.v
+n7/Cert7_s027.vo.native (real: 2.32, user: 1.48, sys: 0.37, mem: 355788 ko)
+COQC n7/Cert7_s054.v
+n7/Cert7_s062.vo.native (real: 2.23, user: 1.50, sys: 0.39, mem: 364988 ko)
+COQC n7/Cert7_s031.v
+n7/Cert7_s024.vo (real: 47.73, user: 46.67, sys: 1.05, mem: 1832456 ko)
+COQNATIVE n7/Cert7_s024.vo
+n7/Cert7_s049.vo (real: 45.92, user: 44.88, sys: 1.01, mem: 1782356 ko)
+COQNATIVE n7/Cert7_s049.vo
+n7/Cert7_s024.vo.native (real: 2.15, user: 1.69, sys: 0.45, mem: 392028 ko)
+COQC Wang_Sound.v
+n7/Cert7_s021.vo (real: 46.71, user: 45.56, sys: 1.12, mem: 1869084 ko)
+COQNATIVE n7/Cert7_s021.vo
+n7/Cert7_s033.vo (real: 45.88, user: 44.78, sys: 1.08, mem: 1769852 ko)
+COQNATIVE n7/Cert7_s033.vo
+n7/Cert7_s049.vo.native (real: 2.09, user: 1.66, sys: 0.41, mem: 383556 ko)
+COQC n7/Check7_s000.v
+Wang_Sound.vo (real: 2.12, user: 1.88, sys: 0.24, mem: 449840 ko)
+COQNATIVE Wang_Sound.vo
+Wang_Sound.vo.native (real: 0.40, user: 0.30, sys: 0.09, mem: 92268 ko)
+COQC n7/Check7_s002.v
+n7/Cert7_s021.vo.native (real: 2.17, user: 1.74, sys: 0.42, mem: 395816 ko)
+COQC n7/Check7_s042.v
+n7/Cert7_s033.vo.native (real: 2.14, user: 1.69, sys: 0.44, mem: 388600 ko)
+COQC n7/Check7_s040.v
+n7/Cert7_s032.vo (real: 49.54, user: 48.37, sys: 1.12, mem: 1895612 ko)
+COQNATIVE n7/Cert7_s032.vo
+n7/Cert7_s061.vo (real: 42.33, user: 41.31, sys: 1.00, mem: 1686764 ko)
+COQNATIVE n7/Cert7_s061.vo
+n7/Cert7_s032.vo.native (real: 2.56, user: 1.74, sys: 0.43, mem: 393156 ko)
+COQC n7/Check7_s010.v
+n7/Cert7_s061.vo.native (real: 2.35, user: 1.60, sys: 0.41, mem: 366544 ko)
+COQC n7/Check7_s014.v
+n7/Cert7_s016.vo (real: 41.23, user: 40.21, sys: 1.01, mem: 1669392 ko)
+COQNATIVE n7/Cert7_s016.vo
+n7/Cert7_s019.vo (real: 52.00, user: 50.77, sys: 1.23, mem: 2000616 ko)
+COQNATIVE n7/Cert7_s019.vo
+n7/Cert7_s005.vo (real: 42.01, user: 40.97, sys: 1.02, mem: 1716836 ko)
+COQNATIVE n7/Cert7_s005.vo
+n7/Cert7_s016.vo.native (real: 2.32, user: 1.57, sys: 0.37, mem: 367616 ko)
+COQC n7/Check7_s039.v
+n7/Cert7_s019.vo.native (real: 2.99, user: 1.94, sys: 0.48, mem: 426420 ko)
+COQC n7/Check7_s008.v
+n7/Cert7_s005.vo.native (real: 2.41, user: 1.56, sys: 0.37, mem: 367196 ko)
+COQC n7/Check7_s041.v
+n7/Cert7_s055.vo (real: 43.54, user: 42.52, sys: 0.96, mem: 1680928 ko)
+COQNATIVE n7/Cert7_s055.vo
+n7/Cert7_s056.vo (real: 48.24, user: 47.05, sys: 1.12, mem: 1865600 ko)
+COQNATIVE n7/Cert7_s056.vo
+n7/Cert7_s055.vo.native (real: 2.15, user: 1.69, sys: 0.43, mem: 366452 ko)
+COQC n7/Check7_s030.v
+n7/Cert7_s056.vo.native (real: 2.26, user: 1.78, sys: 0.46, mem: 394284 ko)
+COQC n7/Check7_s009.v
+n7/Cert7_s018.vo (real: 54.78, user: 53.49, sys: 1.26, mem: 2011612 ko)
+COQNATIVE n7/Cert7_s018.vo
+n7/Cert7_s057.vo (real: 43.96, user: 42.88, sys: 1.01, mem: 1684016 ko)
+COQNATIVE n7/Cert7_s057.vo
+n7/Cert7_s059.vo (real: 43.69, user: 42.58, sys: 1.03, mem: 1679276 ko)
+COQNATIVE n7/Cert7_s059.vo
+n7/Cert7_s018.vo.native (real: 3.01, user: 2.00, sys: 0.52, mem: 428976 ko)
+COQC n7/Check7_s028.v
+n7/Cert7_s057.vo.native (real: 2.38, user: 1.58, sys: 0.40, mem: 363476 ko)
+COQC n7/Check7_s037.v
+n7/Cert7_s059.vo.native (real: 2.59, user: 1.62, sys: 0.41, mem: 363728 ko)
+COQC n7/Check7_s034.v
+n7/Cert7_s051.vo (real: 40.24, user: 39.19, sys: 0.98, mem: 1581792 ko)
+COQNATIVE n7/Cert7_s051.vo
+n7/Cert7_s051.vo.native (real: 2.10, user: 1.40, sys: 0.37, mem: 338980 ko)
+COQC n7/Check7_s063.v
+n7/Cert7_s052.vo (real: 46.45, user: 45.41, sys: 1.02, mem: 1674532 ko)
+COQNATIVE n7/Cert7_s052.vo
+n7/Cert7_s052.vo.native (real: 2.43, user: 1.69, sys: 0.38, mem: 361448 ko)
+COQC n7/Check7_s012.v
+n7/Cert7_s058.vo (real: 44.60, user: 43.58, sys: 0.99, mem: 1689104 ko)
+COQNATIVE n7/Cert7_s058.vo
+n7/Cert7_s054.vo (real: 42.85, user: 41.81, sys: 1.03, mem: 1589532 ko)
+COQNATIVE n7/Cert7_s054.vo
+n7/Cert7_s058.vo.native (real: 1.98, user: 1.57, sys: 0.38, mem: 344220 ko)
+COQC n7/Check7_s038.v
+n7/Cert7_s054.vo.native (real: 2.16, user: 1.45, sys: 0.36, mem: 320428 ko)
+COQC n7/Check7_s043.v
+n7/Cert7_s060.vo (real: 46.70, user: 45.55, sys: 1.07, mem: 1685824 ko)
+COQNATIVE n7/Cert7_s060.vo
+n7/Cert7_s060.vo.native (real: 1.94, user: 1.54, sys: 0.38, mem: 332816 ko)
+COQC n7/Check7_s050.v
+n7/Cert7_s031.vo (real: 49.45, user: 48.15, sys: 1.22, mem: 1788456 ko)
+COQNATIVE n7/Cert7_s031.vo
+n7/Cert7_s031.vo.native (real: 2.19, user: 1.75, sys: 0.42, mem: 351180 ko)
+COQC n7/Check7_s048.v
+Finished transaction in 752.009 secs (750.893u,0.927s) (successful)
+n7/Check7_s043.vo (real: 752.64, user: 751.19, sys: 1.33, mem: 2464380 ko)
+COQNATIVE n7/Check7_s043.vo
+n7/Check7_s043.vo.native (real: 0.45, user: 0.28, sys: 0.17, mem: 246108 ko)
+COQC n7/Check7_s045.v
+Finished transaction in 771.126 secs (770.073u,0.952s) (successful)
+n7/Check7_s050.vo (real: 771.74, user: 770.34, sys: 1.37, mem: 2592724 ko)
+COQNATIVE n7/Check7_s050.vo
+n7/Check7_s050.vo.native (real: 0.43, user: 0.26, sys: 0.17, mem: 226532 ko)
+COQC n7/Check7_s006.v
+Finished transaction in 789.373 secs (788.44u,0.836s) (successful)
+n7/Check7_s048.vo (real: 789.99, user: 788.74, sys: 1.22, mem: 2377260 ko)
+COQNATIVE n7/Check7_s048.vo
+n7/Check7_s048.vo.native (real: 0.43, user: 0.27, sys: 0.16, mem: 234616 ko)
+COQC n7/Check7_s020.v
+Finished transaction in 847.979 secs (846.862u,1.023s) (successful)
+n7/Check7_s012.vo (real: 848.61, user: 847.13, sys: 1.45, mem: 2698064 ko)
+COQNATIVE n7/Check7_s012.vo
+n7/Check7_s012.vo.native (real: 0.43, user: 0.27, sys: 0.16, mem: 237160 ko)
+COQC n7/Check7_s047.v
+Finished transaction in 878.233 secs (877.052u,1.02s) (successful)
+n7/Check7_s038.vo (real: 878.92, user: 877.35, sys: 1.47, mem: 2642792 ko)
+COQNATIVE n7/Check7_s038.vo
+n7/Check7_s038.vo.native (real: 0.48, user: 0.29, sys: 0.19, mem: 278140 ko)
+COQC n7/Check7_s004.v
+Finished transaction in 915.955 secs (914.734u,0.958s) (successful)
+n7/Check7_s008.vo (real: 916.53, user: 914.98, sys: 1.34, mem: 2448580 ko)
+COQNATIVE n7/Check7_s008.vo
+Finished transaction in 911.726 secs (910.635u,0.999s) (successful)
+n7/Check7_s008.vo.native (real: 0.41, user: 0.25, sys: 0.15, mem: 211948 ko)
+COQC n7/Check7_s013.v
+n7/Check7_s009.vo (real: 912.30, user: 910.88, sys: 1.39, mem: 2725900 ko)
+COQNATIVE n7/Check7_s009.vo
+n7/Check7_s009.vo.native (real: 0.39, user: 0.25, sys: 0.14, mem: 204960 ko)
+COQC n7/Check7_s011.v
+Finished transaction in 911.821 secs (910.657u,0.989s) (successful)
+n7/Check7_s028.vo (real: 912.40, user: 910.89, sys: 1.39, mem: 2445592 ko)
+COQNATIVE n7/Check7_s028.vo
+n7/Check7_s028.vo.native (real: 0.51, user: 0.32, sys: 0.19, mem: 205628 ko)
+COQC n7/Check7_s017.v
+Finished transaction in 907.628 secs (906.593u,0.814s) (successful)
+n7/Check7_s063.vo (real: 908.17, user: 906.84, sys: 1.17, mem: 2202656 ko)
+COQNATIVE n7/Check7_s063.vo
+n7/Check7_s063.vo.native (real: 0.43, user: 0.27, sys: 0.15, mem: 214380 ko)
+COQC n7/Check7_s007.v
+Finished transaction in 928.89 secs (927.692u,0.979s) (successful)
+n7/Check7_s039.vo (real: 929.48, user: 927.94, sys: 1.37, mem: 2500156 ko)
+COQNATIVE n7/Check7_s039.vo
+n7/Check7_s039.vo.native (real: 0.49, user: 0.30, sys: 0.19, mem: 263052 ko)
+COQC n7/Check7_s003.v
+Finished transaction in 957.666 secs (956.606u,0.963s) (successful)
+n7/Check7_s030.vo (real: 958.28, user: 956.88, sys: 1.36, mem: 2533500 ko)
+COQNATIVE n7/Check7_s030.vo
+n7/Check7_s030.vo.native (real: 0.46, user: 0.27, sys: 0.18, mem: 243528 ko)
+COQC n7/Check7_s035.v
+Finished transaction in 970.95 secs (969.905u,0.945s) (successful)
+n7/Check7_s034.vo (real: 971.57, user: 970.19, sys: 1.34, mem: 2409164 ko)
+COQNATIVE n7/Check7_s034.vo
+n7/Check7_s034.vo.native (real: 0.45, user: 0.28, sys: 0.17, mem: 253324 ko)
+COQC n7/Check7_s026.v
+Finished transaction in 1033.722 secs (1032.466u,1.054s) (successful)
+Finished transaction in 1024.249 secs (1022.929u,1.133s) (successful)
+n7/Check7_s041.vo (real: 1034.35, user: 1032.73, sys: 1.48, mem: 2656432 ko)
+COQNATIVE n7/Check7_s041.vo
+n7/Check7_s037.vo (real: 1024.94, user: 1023.19, sys: 1.62, mem: 2908960 ko)
+COQNATIVE n7/Check7_s037.vo
+n7/Check7_s041.vo.native (real: 0.47, user: 0.27, sys: 0.20, mem: 251564 ko)
+COQC n7/Check7_s015.v
+n7/Check7_s037.vo.native (real: 0.47, user: 0.28, sys: 0.19, mem: 262460 ko)
+COQC n7/Check7_s046.v
+Finished transaction in 1250.247 secs (1249.025u,1.044s) (successful)
+n7/Check7_s014.vo (real: 1250.88, user: 1249.30, sys: 1.46, mem: 2745116 ko)
+COQNATIVE n7/Check7_s014.vo
+n7/Check7_s014.vo.native (real: 0.44, user: 0.27, sys: 0.16, mem: 248712 ko)
+COQC n7/Check7_s053.v
+Finished transaction in 1350.517 secs (1349.266u,1.068s) (successful)
+n7/Check7_s010.vo (real: 1351.10, user: 1349.52, sys: 1.45, mem: 2698048 ko)
+COQNATIVE n7/Check7_s010.vo
+n7/Check7_s010.vo.native (real: 0.41, user: 0.24, sys: 0.16, mem: 213636 ko)
+COQC n7/Check7_s022.v
+Finished transaction in 1435.619 secs (1434.176u,1.332s) (successful)
+n7/Check7_s040.vo (real: 1436.30, user: 1434.44, sys: 1.80, mem: 3204944 ko)
+COQNATIVE n7/Check7_s040.vo
+n7/Check7_s040.vo.native (real: 0.49, user: 0.30, sys: 0.18, mem: 287908 ko)
+COQC n7/Check7_s023.v
+Finished transaction in 1532.711 secs (1531.142u,1.445s) (successful)
+n7/Check7_s042.vo (real: 1533.41, user: 1531.41, sys: 1.93, mem: 3598004 ko)
+COQNATIVE n7/Check7_s042.vo
+n7/Check7_s042.vo.native (real: 0.50, user: 0.31, sys: 0.18, mem: 309704 ko)
+COQC n7/Check7_s001.v
+Finished transaction in 753.954 secs (752.989u,0.88s) (successful)
+n7/Check7_s045.vo (real: 754.55, user: 753.25, sys: 1.27, mem: 2346964 ko)
+COQNATIVE n7/Check7_s045.vo
+n7/Check7_s045.vo.native (real: 0.44, user: 0.26, sys: 0.18, mem: 243768 ko)
+COQC n7/Check7_s044.v
+Finished transaction in 787.478 secs (786.526u,0.866s) (successful)
+n7/Check7_s006.vo (real: 788.03, user: 786.78, sys: 1.22, mem: 2285096 ko)
+COQNATIVE n7/Check7_s006.vo
+n7/Check7_s006.vo.native (real: 0.42, user: 0.25, sys: 0.16, mem: 228020 ko)
+COQC n7/Check7_s036.v
+Finished transaction in 722.846 secs (721.941u,0.815s) (successful)
+n7/Check7_s047.vo (real: 723.43, user: 722.20, sys: 1.21, mem: 2208132 ko)
+COQNATIVE n7/Check7_s047.vo
+n7/Check7_s047.vo.native (real: 0.50, user: 0.31, sys: 0.18, mem: 230712 ko)
+COQC n7/Check7_s029.v
+Finished transaction in 706.869 secs (705.963u,0.826s) (successful)
+n7/Check7_s011.vo (real: 707.44, user: 706.21, sys: 1.20, mem: 2300172 ko)
+COQNATIVE n7/Check7_s011.vo
+n7/Check7_s011.vo.native (real: 0.42, user: 0.26, sys: 0.16, mem: 227352 ko)
+COQC n7/Check7_s025.v
+Finished transaction in 697.934 secs (696.95u,0.856s) (successful)
+n7/Check7_s003.vo (real: 698.54, user: 697.23, sys: 1.25, mem: 2215456 ko)
+COQNATIVE n7/Check7_s003.vo
+n7/Check7_s003.vo.native (real: 0.41, user: 0.26, sys: 0.15, mem: 210352 ko)
+COQC n7/Check7_s024.v
+Finished transaction in 708.354 secs (707.325u,0.914s) (successful)
+n7/Check7_s007.vo (real: 708.95, user: 707.58, sys: 1.32, mem: 2401752 ko)
+COQNATIVE n7/Check7_s007.vo
+n7/Check7_s007.vo.native (real: 0.43, user: 0.26, sys: 0.16, mem: 228100 ko)
+COQC n7/Check7_s062.v
+Finished transaction in 846.867 secs (845.783u,0.991s) (successful)
+n7/Check7_s020.vo (real: 847.47, user: 846.02, sys: 1.41, mem: 2735400 ko)
+COQNATIVE n7/Check7_s020.vo
+n7/Check7_s020.vo.native (real: 0.44, user: 0.26, sys: 0.18, mem: 249032 ko)
+COQC n7/Check7_s027.v
+Finished transaction in 704.758 secs (703.628u,1.044s) (successful)
+n7/Check7_s026.vo (real: 705.38, user: 703.88, sys: 1.47, mem: 2689592 ko)
+COQNATIVE n7/Check7_s026.vo
+n7/Check7_s026.vo.native (real: 0.46, user: 0.30, sys: 0.16, mem: 218580 ko)
+COQC n7/Check7_s032.v
+Finished transaction in 660.925 secs (660.018u,0.817s) (successful)
+n7/Check7_s046.vo (real: 661.53, user: 660.30, sys: 1.20, mem: 2232472 ko)
+COQNATIVE n7/Check7_s046.vo
+n7/Check7_s046.vo.native (real: 0.43, user: 0.26, sys: 0.16, mem: 234804 ko)
+COQC n7/Check7_s049.v
+Finished transaction in 788.803 secs (787.85u,0.868s) (successful)
+n7/Check7_s004.vo (real: 789.39, user: 788.09, sys: 1.27, mem: 2410316 ko)
+COQNATIVE n7/Check7_s004.vo
+n7/Check7_s004.vo.native (real: 0.43, user: 0.26, sys: 0.16, mem: 212672 ko)
+COQC n7/Check7_s021.v
+Finished transaction in 787.474 secs (786.506u,0.836s) (successful)
+n7/Check7_s017.vo (real: 788.15, user: 786.86, sys: 1.23, mem: 2190984 ko)
+COQNATIVE n7/Check7_s017.vo
+n7/Check7_s017.vo.native (real: 0.44, user: 0.26, sys: 0.17, mem: 231308 ko)
+COQC n7/Check7_s033.v
+Finished transaction in 818.868 secs (817.939u,0.826s) (successful)
+n7/Check7_s035.vo (real: 819.45, user: 818.20, sys: 1.22, mem: 2255684 ko)
+COQNATIVE n7/Check7_s035.vo
+n7/Check7_s035.vo.native (real: 0.44, user: 0.28, sys: 0.16, mem: 240552 ko)
+COQC n7/Check7_s019.v
+Finished transaction in 702.865 secs (701.921u,0.853s) (successful)
+n7/Check7_s053.vo (real: 703.43, user: 702.14, sys: 1.25, mem: 2274812 ko)
+COQNATIVE n7/Check7_s053.vo
+n7/Check7_s053.vo.native (real: 0.44, user: 0.27, sys: 0.17, mem: 221992 ko)
+COQC n7/Check7_s018.v
+Finished transaction in 664.622 secs (663.505u,1.035s) (successful)
+n7/Check7_s022.vo (real: 665.22, user: 663.75, sys: 1.45, mem: 2758264 ko)
+COQNATIVE n7/Check7_s022.vo
+n7/Check7_s022.vo.native (real: 0.45, user: 0.27, sys: 0.18, mem: 244764 ko)
+COQC n7/Check7_s061.v
+Finished transaction in 1100.354 secs (1099.031u,1.13s) (successful)
+n7/Check7_s013.vo (real: 1101.00, user: 1099.27, sys: 1.59, mem: 2877980 ko)
+COQNATIVE n7/Check7_s013.vo
+n7/Check7_s013.vo.native (real: 0.51, user: 0.31, sys: 0.20, mem: 251432 ko)
+COQC n7/Check7_s056.v
+Finished transaction in 684.885 secs (683.861u,0.94s) (successful)
+n7/Check7_s023.vo (real: 685.52, user: 684.13, sys: 1.37, mem: 2608596 ko)
+COQNATIVE n7/Check7_s023.vo
+n7/Check7_s023.vo.native (real: 0.50, user: 0.30, sys: 0.20, mem: 228788 ko)
+COQC n7/Check7_s016.v
+Finished transaction in 1124.877 secs (1123.781u,0.97s) (successful)
+n7/Check7_s015.vo (real: 1125.49, user: 1124.04, sys: 1.38, mem: 2375076 ko)
+COQNATIVE n7/Check7_s015.vo
+n7/Check7_s015.vo.native (real: 0.48, user: 0.29, sys: 0.19, mem: 222140 ko)
+COQC n7/Check7_s005.v
+Finished transaction in 648.023 secs (647.194u,0.747s) (successful)
+n7/Check7_s001.vo (real: 648.58, user: 647.44, sys: 1.11, mem: 2064332 ko)
+COQNATIVE n7/Check7_s001.vo
+n7/Check7_s001.vo.native (real: 0.43, user: 0.26, sys: 0.17, mem: 206480 ko)
+COQC n7/Check7_s055.v
+Finished transaction in 651.008 secs (650.134u,0.79s) (successful)
+n7/Check7_s044.vo (real: 651.60, user: 650.39, sys: 1.18, mem: 2253764 ko)
+COQNATIVE n7/Check7_s044.vo
+n7/Check7_s044.vo.native (real: 0.45, user: 0.28, sys: 0.17, mem: 247020 ko)
+COQC n7/Check7_s057.v
+Finished transaction in 578.018 secs (577.093u,0.811s) (successful)
+n7/Check7_s024.vo (real: 578.57, user: 577.33, sys: 1.18, mem: 2205508 ko)
+COQNATIVE n7/Check7_s024.vo
+n7/Check7_s024.vo.native (real: 0.42, user: 0.27, sys: 0.15, mem: 228112 ko)
+COQC n7/Check7_s059.v
+Finished transaction in 582.917 secs (581.976u,0.86s) (successful)
+n7/Check7_s025.vo (real: 583.50, user: 582.21, sys: 1.26, mem: 2289888 ko)
+COQNATIVE n7/Check7_s025.vo
+n7/Check7_s025.vo.native (real: 0.44, user: 0.26, sys: 0.18, mem: 219716 ko)
+COQC n7/Check7_s052.v
+Finished transaction in 533.132 secs (532.268u,0.778s) (successful)
+n7/Check7_s032.vo (real: 533.72, user: 532.57, sys: 1.13, mem: 2128152 ko)
+COQNATIVE n7/Check7_s032.vo
+n7/Check7_s032.vo.native (real: 0.43, user: 0.28, sys: 0.14, mem: 228124 ko)
+COQC n7/Check7_s051.v
+Finished transaction in 595.668 secs (594.8u,0.785s) (successful)
+n7/Check7_s062.vo (real: 596.26, user: 595.05, sys: 1.18, mem: 2175024 ko)
+COQNATIVE n7/Check7_s062.vo
+n7/Check7_s062.vo.native (real: 0.48, user: 0.30, sys: 0.18, mem: 213948 ko)
+COQC n7/Check7_s058.v
+Finished transaction in 541.595 secs (540.677u,0.835s) (successful)
+n7/Check7_s049.vo (real: 542.21, user: 540.94, sys: 1.24, mem: 2195560 ko)
+COQNATIVE n7/Check7_s049.vo
+n7/Check7_s049.vo.native (real: 0.43, user: 0.25, sys: 0.17, mem: 221876 ko)
+COQC n7/Check7_s060.v
+Finished transaction in 647.1 secs (646.169u,0.844s) (successful)
+n7/Check7_s036.vo (real: 647.70, user: 646.41, sys: 1.26, mem: 2299756 ko)
+COQNATIVE n7/Check7_s036.vo
+Finished transaction in 566.218 secs (565.357u,0.775s) (successful)
+n7/Check7_s027.vo (real: 566.78, user: 565.63, sys: 1.12, mem: 2068900 ko)
+COQNATIVE n7/Check7_s027.vo
+n7/Check7_s036.vo.native (real: 0.49, user: 0.30, sys: 0.19, mem: 244216 ko)
+COQC n7/Check7_s054.v
+n7/Check7_s027.vo.native (real: 0.43, user: 0.26, sys: 0.16, mem: 208520 ko)
+COQC n7/Check7_s031.v
+Finished transaction in 548.692 secs (547.806u,0.781s) (successful)
+n7/Check7_s033.vo (real: 549.26, user: 548.06, sys: 1.16, mem: 2094968 ko)
+COQNATIVE n7/Check7_s033.vo
+n7/Check7_s033.vo.native (real: 0.43, user: 0.27, sys: 0.16, mem: 225480 ko)
+COQC n7/Certs7.v
+Finished transaction in 663.004 secs (662.034u,0.876s) (successful)
+n7/Check7_s029.vo (real: 663.65, user: 662.33, sys: 1.29, mem: 2237192 ko)
+COQNATIVE n7/Check7_s029.vo
+n7/Check7_s029.vo.native (real: 0.41, user: 0.26, sys: 0.15, mem: 210664 ko)
+COQC Wang_Upper.v
+Wang_Upper.vo (real: 0.65, user: 0.41, sys: 0.24, mem: 418720 ko)
+COQNATIVE Wang_Upper.vo
+Wang_Upper.vo.native (real: 0.34, user: 0.24, sys: 0.09, mem: 92568 ko)
+COQC Wang_Champions.v
+Wang_Champions.vo (real: 0.46, user: 0.25, sys: 0.20, mem: 385456 ko)
+COQNATIVE Wang_Champions.vo
+Wang_Champions.vo.native (real: 0.32, user: 0.21, sys: 0.10, mem: 92564 ko)
+COQC WangTiles_Theorem.v
+Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 3.421 secs (3.284u,0.076s) (successful)
+Finished transaction in 0. secs (0.u,0.s) (successful)
+n7/Certs7.vo (real: 9.44, user: 6.56, sys: 2.87, mem: 5803856 ko)
+COQNATIVE n7/Certs7.vo
+n7/Certs7.vo.native (real: 9.19, user: 6.55, sys: 2.64, mem: 5473700 ko)
+Finished transaction in 592.38 secs (591.463u,0.821s) (successful)
+n7/Check7_s021.vo (real: 592.95, user: 591.73, sys: 1.18, mem: 2177312 ko)
+COQNATIVE n7/Check7_s021.vo
+n7/Check7_s021.vo.native (real: 0.43, user: 0.28, sys: 0.15, mem: 230372 ko)
+Finished transaction in 576.712 secs (575.772u,0.856s) (successful)
+n7/Check7_s019.vo (real: 577.28, user: 576.02, sys: 1.24, mem: 2372648 ko)
+COQNATIVE n7/Check7_s019.vo
+n7/Check7_s019.vo.native (real: 0.44, user: 0.26, sys: 0.17, mem: 245776 ko)
+Finished transaction in 560.69 secs (559.663u,0.938s) (successful)
+n7/Check7_s018.vo (real: 561.30, user: 559.93, sys: 1.35, mem: 2316564 ko)
+COQNATIVE n7/Check7_s018.vo
+n7/Check7_s018.vo.native (real: 0.44, user: 0.26, sys: 0.17, mem: 245280 ko)
+Finished transaction in 525.289 secs (524.443u,0.763s) (successful)
+n7/Check7_s061.vo (real: 525.86, user: 524.68, sys: 1.16, mem: 2139072 ko)
+COQNATIVE n7/Check7_s061.vo
+n7/Check7_s061.vo.native (real: 0.42, user: 0.26, sys: 0.15, mem: 214112 ko)
+Finished transaction in 578.758 secs (577.835u,0.832s) (successful)
+n7/Check7_s056.vo (real: 579.39, user: 578.11, sys: 1.26, mem: 2141764 ko)
+COQNATIVE n7/Check7_s056.vo
+n7/Check7_s056.vo.native (real: 0.44, user: 0.28, sys: 0.15, mem: 229552 ko)
+Finished transaction in 516.731 secs (515.807u,0.835s) (successful)
+n7/Check7_s016.vo (real: 517.37, user: 516.11, sys: 1.23, mem: 2148388 ko)
+COQNATIVE n7/Check7_s016.vo
+n7/Check7_s016.vo.native (real: 0.40, user: 0.24, sys: 0.15, mem: 213820 ko)
+Finished transaction in 487.15 secs (486.283u,0.776s) (successful)
+n7/Check7_s005.vo (real: 487.78, user: 486.55, sys: 1.20, mem: 2124012 ko)
+COQNATIVE n7/Check7_s005.vo
+n7/Check7_s005.vo.native (real: 0.41, user: 0.24, sys: 0.16, mem: 213620 ko)
+Finished transaction in 429.575 secs (428.769u,0.728s) (successful)
+n7/Check7_s051.vo (real: 430.10, user: 429.01, sys: 1.07, mem: 2030796 ko)
+COQNATIVE n7/Check7_s051.vo
+n7/Check7_s051.vo.native (real: 0.37, user: 0.24, sys: 0.13, mem: 200608 ko)
+Finished transaction in 422.147 secs (421.29u,0.777s) (successful)
+n7/Check7_s031.vo (real: 422.70, user: 421.55, sys: 1.13, mem: 2007328 ko)
+COQNATIVE n7/Check7_s031.vo
+n7/Check7_s031.vo.native (real: 0.40, user: 0.24, sys: 0.16, mem: 212472 ko)
+Finished transaction in 493.003 secs (492.157u,0.767s) (successful)
+n7/Check7_s055.vo (real: 493.57, user: 492.40, sys: 1.14, mem: 2061284 ko)
+COQNATIVE n7/Check7_s055.vo
+n7/Check7_s055.vo.native (real: 0.40, user: 0.24, sys: 0.16, mem: 213700 ko)
+Finished transaction in 460.873 secs (460.055u,0.739s) (successful)
+n7/Check7_s052.vo (real: 461.47, user: 460.33, sys: 1.12, mem: 2096692 ko)
+COQNATIVE n7/Check7_s052.vo
+n7/Check7_s052.vo.native (real: 0.39, user: 0.25, sys: 0.13, mem: 217856 ko)
+Finished transaction in 489.846 secs (488.983u,0.784s) (successful)
+n7/Check7_s057.vo (real: 490.42, user: 489.23, sys: 1.16, mem: 2095496 ko)
+COQNATIVE n7/Check7_s057.vo
+n7/Check7_s057.vo.native (real: 0.40, user: 0.25, sys: 0.15, mem: 213148 ko)
+Finished transaction in 442.668 secs (441.822u,0.763s) (successful)
+n7/Check7_s054.vo (real: 443.27, user: 442.10, sys: 1.15, mem: 2002060 ko)
+COQNATIVE n7/Check7_s054.vo
+n7/Check7_s054.vo.native (real: 0.38, user: 0.23, sys: 0.15, mem: 200204 ko)
+Finished transaction in 449.02 secs (448.171u,0.766s) (successful)
+n7/Check7_s060.vo (real: 449.60, user: 448.40, sys: 1.17, mem: 2023152 ko)
+COQNATIVE n7/Check7_s060.vo
+n7/Check7_s060.vo.native (real: 0.38, user: 0.23, sys: 0.15, mem: 205724 ko)
+Finished transaction in 459.563 secs (458.714u,0.764s) (successful)
+n7/Check7_s058.vo (real: 460.14, user: 458.99, sys: 1.13, mem: 2019324 ko)
+COQNATIVE n7/Check7_s058.vo
+n7/Check7_s058.vo.native (real: 0.38, user: 0.24, sys: 0.13, mem: 210152 ko)
+Finished transaction in 489.306 secs (488.358u,0.814s) (successful)
+n7/Check7_s059.vo (real: 489.85, user: 488.59, sys: 1.19, mem: 2155148 ko)
+COQNATIVE n7/Check7_s059.vo
+n7/Check7_s059.vo.native (real: 0.39, user: 0.24, sys: 0.15, mem: 212888 ko)
+Finished transaction in 683.265 secs (681.916u,1.26s) (successful)
+Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 2.581 secs (2.526u,0.004s) (successful)
+Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 3.357 secs (3.298u,0.009s) (successful)
+Axioms:
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.set :
+  forall A : Type, PArray.array A -> PrimInt63.int -> A -> PArray.array A
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.make : forall A : Type, PrimInt63.int -> A -> PArray.array A
+PrimInt63.lxor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PArray.get : forall A : Type, PArray.array A -> PrimInt63.int -> A
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PArray.array : Type -> Type
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Axioms:
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.set :
+  forall A : Type, PArray.array A -> PrimInt63.int -> A -> PArray.array A
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.make : forall A : Type, PrimInt63.int -> A -> PArray.array A
+PrimInt63.lxor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PArray.get : forall A : Type, PArray.array A -> PrimInt63.int -> A
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PArray.array : Type -> Type
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Closed under the global context
+Closed under the global context
+Axioms:
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.set :
+  forall A : Type, PArray.array A -> PrimInt63.int -> A -> PArray.array A
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.make : forall A : Type, PrimInt63.int -> A -> PArray.array A
+PrimInt63.lxor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PArray.get : forall A : Type, PArray.array A -> PrimInt63.int -> A
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PArray.array : Type -> Type
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+WangTiles_Theorem.vo (real: 695.15, user: 693.19, sys: 1.92, mem: 3121284 ko)
+COQNATIVE WangTiles_Theorem.vo
+WangTiles_Theorem.vo.native (real: 0.34, user: 0.22, sys: 0.11, mem: 149152 ko)
+Finished transaction in 4533.6 secs (4529.388u,3.807s) (successful)
+n7/Check7_s002.vo (real: 4534.55, user: 4529.62, sys: 4.58, mem: 7746884 ko)
+COQNATIVE n7/Check7_s002.vo
+n7/Check7_s002.vo.native (real: 0.38, user: 0.25, sys: 0.13, mem: 203100 ko)
+Finished transaction in 4873.523 secs (4867.762u,5.298s) (successful)
+n7/Check7_s000.vo (real: 4874.14, user: 4867.99, sys: 5.74, mem: 9799476 ko)
+COQNATIVE n7/Check7_s000.vo
+n7/Check7_s000.vo.native (real: 0.40, user: 0.24, sys: 0.15, mem: 225548 ko)
+COQC n7/Checks7.v
+n7/Checks7.vo (real: 8.65, user: 5.76, sys: 2.88, mem: 5801576 ko)
+COQNATIVE n7/Checks7.vo
+n7/Checks7.vo.native (real: 8.78, user: 6.07, sys: 2.71, mem: 5475164 ko)
+COQC WangTiles_Theorem7.v
+Finished transaction in 0. secs (0.u,0.s) (successful)
+Finished transaction in 24.16 secs (22.924u,1.178s) (successful)
+Axioms:
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.set :
+  forall A : Type, PArray.array A -> PrimInt63.int -> A -> PArray.array A
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.make : forall A : Type, PrimInt63.int -> A -> PArray.array A
+PrimInt63.lxor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PArray.get : forall A : Type, PArray.array A -> PrimInt63.int -> A
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PArray.array : Type -> Type
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Axioms:
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.set :
+  forall A : Type, PArray.array A -> PrimInt63.int -> A -> PArray.array A
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.make : forall A : Type, PrimInt63.int -> A -> PArray.array A
+PrimInt63.lxor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PArray.get : forall A : Type, PArray.array A -> PrimInt63.int -> A
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PArray.array : Type -> Type
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+WangTiles_Theorem7.vo (real: 81.28, user: 76.91, sys: 4.35, mem: 10691992 ko)
+COQNATIVE WangTiles_Theorem7.vo
+WangTiles_Theorem7.vo.native (real: 8.73, user: 6.11, sys: 2.61, mem: 5493844 ko)
+make[1]: Leaving directory '/home/ubuntu/lanes/wang/clean'
+make: 5146.42 s 10691992 KB
+total wall: 5151 s

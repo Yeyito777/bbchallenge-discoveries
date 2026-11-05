@@ -1,0 +1,4 @@
+holdout H 1,2,4,8 V 2,8,1,0 fills_upto 4 refused labels 0011222201333310
+holdout H 9,4,2,9 V 6,8,1,1 fills_upto 4 refused labels 0012333302030310
+holdout H a,4,1,1 V 6,9,9,6 fills_upto 4 refused labels 0102120323210313
+holdout H a,5,a,5 V 8,6,1,8 fills_upto 4 refused labels 0123121203303021

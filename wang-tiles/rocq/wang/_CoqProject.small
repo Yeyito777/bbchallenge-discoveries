@@ -1,0 +1,18 @@
+-Q . WangTiles
+
+WangTiles_Statement.v
+
+Wang_Rel.v
+Wang_Refute.v
+Wang_Checker.v
+Wang_Geom.v
+Wang_Canon.v
+Wang_Sound.v
+Wang_Upper.v
+Wang_Champions.v
+
+Wang_Champions_Data.v
+Cert_n5_D7.v
+Cert_n6_D9.v
+
+WangTiles_Theorem.v

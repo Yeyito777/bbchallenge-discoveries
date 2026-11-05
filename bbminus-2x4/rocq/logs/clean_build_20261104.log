@@ -1,0 +1,307 @@
+start Wed Nov  4 05:25:16 UTC 2026 stack 8192 cpu AMD EPYC 9R14
+coq_makefile -f _CoqProject -o Makefile.coq
+make[1]: Entering directory '/home/ubuntu/lanes/least/clean2/BBminus2x4'
+COQDEP VFILES
+COQC BBminus2x4_Statement.v
+COQC BB2x4_Deciders_Generic.v
+COQNATIVE BB2x4_Deciders_Generic.vo
+COQNATIVE BBminus2x4_Statement.vo
+COQC Tactics.v
+COQNATIVE Tactics.vo
+COQC Prelims.v
+COQNATIVE Prelims.vo
+COQC BB2x4_Encodings.v
+COQNATIVE BB2x4_Encodings.vo
+COQC List_Routines.v
+COQNATIVE List_Routines.vo
+COQC TM.v
+COQNATIVE TM.vo
+COQC BB2x4_Make_TM.v
+COQC Deciders/Deciders_Common.v
+COQNATIVE Deciders/Deciders_Common.vo
+COQNATIVE BB2x4_Make_TM.vo
+COQC TNF.v
+COQNATIVE TNF.vo
+COQC Deciders/Decider_NGramCPS.v
+File "./Deciders/Decider_NGramCPS.v", line 497, characters 12-22:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./Deciders/Decider_NGramCPS.v", line 497, characters 12-22:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./Deciders/Decider_NGramCPS.v", line 497, characters 12-22:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./Deciders/Decider_NGramCPS.v", line 499, characters 12-22:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./Deciders/Decider_NGramCPS.v", line 499, characters 12-22:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./Deciders/Decider_NGramCPS.v", line 499, characters 12-22:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+COQNATIVE Deciders/Decider_NGramCPS.vo
+COQC List_Tape.v
+File "./List_Tape.v", line 619, characters 40-50:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 619, characters 40-50:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 619, characters 40-50:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 655, characters 18-28:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 655, characters 18-28:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 655, characters 18-28:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 742, characters 40-50:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 742, characters 40-50:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./List_Tape.v", line 742, characters 40-50:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+COQNATIVE List_Tape.vo
+COQC Deciders/Decider_Halt.v
+COQC Deciders/Decider_Loop.v
+COQC Deciders/Decider_RepWL.v
+COQC Deciders/Verifier_ClosedAut.v
+COQC Deciders/Verifier_Halt.v
+COQNATIVE Deciders/Verifier_Halt.vo
+COQNATIVE Deciders/Decider_Halt.vo
+COQNATIVE Deciders/Decider_Loop.vo
+COQC Deciders/Decider_Halt_Max.v
+COQNATIVE Deciders/Verifier_ClosedAut.vo
+COQNATIVE Deciders/Decider_RepWL.vo
+COQNATIVE Deciders/Decider_Halt_Max.vo
+COQC Deciders/Decider_Table.v
+COQNATIVE Deciders/Decider_Table.vo
+COQC Deciders/Table_Params.v
+COQC Deciders/ClosedAut_Certificates_0.v
+COQC Deciders/ClosedAut_Certificates_1.v
+COQC Deciders/ClosedAut_Certificates_2.v
+COQC Deciders/ClosedAut_Certificates_3.v
+COQNATIVE Deciders/Table_Params.vo
+COQNATIVE Deciders/ClosedAut_Certificates_3.vo
+COQNATIVE Deciders/ClosedAut_Certificates_2.vo
+COQNATIVE Deciders/ClosedAut_Certificates_1.vo
+COQNATIVE Deciders/ClosedAut_Certificates_0.vo
+COQC Deciders/ClosedAut_Certificates.v
+COQNATIVE Deciders/ClosedAut_Certificates.vo
+COQC BB2x4_Deciders_Pipeline.v
+COQNATIVE BB2x4_Deciders_Pipeline.vo
+COQC TNF_Common.v
+COQNATIVE TNF_Common.vo
+COQC TNF_Roots/Leaf_0.v
+COQC TNF_Roots/Leaf_1.v
+COQC TNF_Roots/Leaf_3.v
+COQC TNF_Roots/Leaf_4.v
+COQC TNF_Roots/Leaf_6.v
+COQC TNF_Roots/Leaf_7.v
+COQC TNF_Roots/Leaf_9.v
+COQC TNF_Roots/Leaf_10.v
+COQNATIVE TNF_Roots/Leaf_1.vo
+COQC TNF_Roots/Leaf_2_0.v
+COQNATIVE TNF_Roots/Leaf_4.vo
+COQC TNF_Roots/Leaf_2_1.v
+COQNATIVE TNF_Roots/Leaf_2_0.vo
+COQC TNF_Roots/Leaf_2_2.v
+COQNATIVE TNF_Roots/Leaf_2_1.vo
+COQC TNF_Roots/Leaf_2_3.v
+COQNATIVE TNF_Roots/Leaf_2_2.vo
+COQC TNF_Roots/Leaf_2_4.v
+COQNATIVE TNF_Roots/Leaf_2_3.vo
+COQC TNF_Roots/Leaf_2_5.v
+COQNATIVE TNF_Roots/Leaf_2_4.vo
+COQC TNF_Roots/Leaf_2_6.v
+COQNATIVE TNF_Roots/Leaf_2_5.vo
+COQC TNF_Roots/Leaf_2_7.v
+COQNATIVE TNF_Roots/Leaf_9.vo
+COQC TNF_Roots/Leaf_2_8.v
+COQNATIVE TNF_Roots/Leaf_6.vo
+COQC TNF_Roots/Leaf_2_9.v
+COQNATIVE TNF_Roots/Leaf_2_7.vo
+COQC TNF_Roots/Leaf_2_10.v
+COQNATIVE TNF_Roots/Leaf_2_6.vo
+COQC TNF_Roots/Leaf_2_11.v
+COQNATIVE TNF_Roots/Leaf_2_8.vo
+COQC TNF_Roots/Leaf_2_12.v
+COQNATIVE TNF_Roots/Leaf_0.vo
+COQC TNF_Roots/Leaf_2_13.v
+COQNATIVE TNF_Roots/Leaf_3.vo
+COQC TNF_Roots/Leaf_2_14.v
+COQNATIVE TNF_Roots/Leaf_2_9.vo
+COQC TNF_Roots/Leaf_2_15.v
+COQNATIVE TNF_Roots/Leaf_10.vo
+COQC TNF_Roots/Leaf_5_0.v
+COQNATIVE TNF_Roots/Leaf_7.vo
+COQC TNF_Roots/Leaf_5_1.v
+COQNATIVE TNF_Roots/Leaf_5_0.vo
+COQC TNF_Roots/Leaf_5_2.v
+COQNATIVE TNF_Roots/Leaf_2_12.vo
+COQC TNF_Roots/Leaf_5_3.v
+COQNATIVE TNF_Roots/Leaf_5_1.vo
+COQC TNF_Roots/Leaf_5_4.v
+COQNATIVE TNF_Roots/Leaf_5_4.vo
+COQC TNF_Roots/Leaf_5_5.v
+COQNATIVE TNF_Roots/Leaf_5_5.vo
+COQC TNF_Roots/Leaf_5_6.v
+COQNATIVE TNF_Roots/Leaf_5_6.vo
+COQNATIVE TNF_Roots/Leaf_2_10.vo
+COQC TNF_Roots/Leaf_5_7.v
+COQC TNF_Roots/Leaf_5_8.v
+COQNATIVE TNF_Roots/Leaf_5_7.vo
+COQC TNF_Roots/Leaf_5_9.v
+COQNATIVE TNF_Roots/Leaf_2_11.vo
+COQC TNF_Roots/Leaf_5_10.v
+COQNATIVE TNF_Roots/Leaf_5_3.vo
+COQC TNF_Roots/Leaf_5_11.v
+COQNATIVE TNF_Roots/Leaf_5_2.vo
+COQC TNF_Roots/Leaf_5_12.v
+COQNATIVE TNF_Roots/Leaf_5_8.vo
+COQC TNF_Roots/Leaf_5_13.v
+COQNATIVE TNF_Roots/Leaf_2_13.vo
+COQC TNF_Roots/Leaf_5_14.v
+COQNATIVE TNF_Roots/Leaf_5_12.vo
+COQC TNF_Roots/Leaf_5_15.v
+COQNATIVE TNF_Roots/Leaf_2_14.vo
+COQC TNF_Roots/Leaf_8_0.v
+COQNATIVE TNF_Roots/Leaf_2_15.vo
+COQC TNF_Roots/Leaf_8_1.v
+COQNATIVE TNF_Roots/Leaf_5_13.vo
+COQC TNF_Roots/Leaf_8_2.v
+COQNATIVE TNF_Roots/Leaf_5_9.vo
+COQC TNF_Roots/Leaf_8_3.v
+COQNATIVE TNF_Roots/Leaf_8_0.vo
+COQC TNF_Roots/Leaf_8_4.v
+COQNATIVE TNF_Roots/Leaf_5_14.vo
+COQC TNF_Roots/Leaf_8_5.v
+COQNATIVE TNF_Roots/Leaf_5_10.vo
+COQC TNF_Roots/Leaf_8_6.v
+COQNATIVE TNF_Roots/Leaf_5_11.vo
+COQC TNF_Roots/Leaf_8_7.v
+COQNATIVE TNF_Roots/Leaf_8_1.vo
+COQC TNF_Roots/Leaf_8_8.v
+COQNATIVE TNF_Roots/Leaf_8_4.vo
+COQC TNF_Roots/Leaf_8_9.v
+COQNATIVE TNF_Roots/Leaf_5_15.vo
+COQC TNF_Roots/Leaf_8_10.v
+COQNATIVE TNF_Roots/Leaf_8_8.vo
+COQC TNF_Roots/Leaf_8_11.v
+COQNATIVE TNF_Roots/Leaf_8_2.vo
+COQC TNF_Roots/Leaf_8_12.v
+COQNATIVE TNF_Roots/Leaf_8_9.vo
+COQNATIVE TNF_Roots/Leaf_8_10.vo
+COQC TNF_Roots/Leaf_8_13.v
+COQC TNF_Roots/Leaf_8_14.v
+COQNATIVE TNF_Roots/Leaf_8_5.vo
+COQC TNF_Roots/Leaf_8_15.v
+COQNATIVE TNF_Roots/Leaf_8_12.vo
+COQC TNF_Roots/Leaf_11_0.v
+COQNATIVE TNF_Roots/Leaf_8_11.vo
+COQC TNF_Roots/Leaf_11_1.v
+COQNATIVE TNF_Roots/Leaf_8_13.vo
+COQC TNF_Roots/Leaf_11_2.v
+COQNATIVE TNF_Roots/Leaf_8_3.vo
+COQC TNF_Roots/Leaf_11_3.v
+COQNATIVE TNF_Roots/Leaf_8_14.vo
+COQC TNF_Roots/Leaf_11_4.v
+COQNATIVE TNF_Roots/Leaf_8_6.vo
+COQC TNF_Roots/Leaf_11_5.v
+COQNATIVE TNF_Roots/Leaf_8_7.vo
+COQC TNF_Roots/Leaf_11_6.v
+COQNATIVE TNF_Roots/Leaf_11_0.vo
+COQC TNF_Roots/Leaf_11_7.v
+COQNATIVE TNF_Roots/Leaf_8_15.vo
+COQC TNF_Roots/Leaf_11_8.v
+COQNATIVE TNF_Roots/Leaf_11_1.vo
+COQC TNF_Roots/Leaf_11_9.v
+COQNATIVE TNF_Roots/Leaf_11_8.vo
+COQC TNF_Roots/Leaf_11_10.v
+COQNATIVE TNF_Roots/Leaf_11_4.vo
+COQC TNF_Roots/Leaf_11_11.v
+COQNATIVE TNF_Roots/Leaf_11_2.vo
+COQC TNF_Roots/Leaf_11_12.v
+COQNATIVE TNF_Roots/Leaf_11_9.vo
+COQC TNF_Roots/Leaf_11_13.v
+COQNATIVE TNF_Roots/Leaf_11_12.vo
+COQC TNF_Roots/Leaf_11_14.v
+COQNATIVE TNF_Roots/Leaf_11_13.vo
+COQC TNF_Roots/Leaf_11_15.v
+COQNATIVE TNF_Roots/Leaf_11_14.vo
+COQNATIVE TNF_Roots/Leaf_11_5.vo
+COQC TNF_Roots/Inner_2.v
+COQC TNF_Roots/Inner_5.v
+COQNATIVE TNF_Roots/Leaf_11_3.vo
+COQNATIVE TNF_Roots/Inner_2.vo
+COQNATIVE TNF_Roots/Inner_5.vo
+COQC TNF_Roots/Inner_8.v
+COQNATIVE TNF_Roots/Inner_8.vo
+COQNATIVE TNF_Roots/Leaf_11_10.vo
+COQNATIVE TNF_Roots/Leaf_11_11.vo
+COQNATIVE TNF_Roots/Leaf_11_6.vo
+COQNATIVE TNF_Roots/Leaf_11_15.vo
+COQNATIVE TNF_Roots/Leaf_11_7.vo
+COQC TNF_Roots/Inner_11.v
+COQNATIVE TNF_Roots/Inner_11.vo
+COQC TNF_Enumeration.v
+COQNATIVE TNF_Enumeration.vo
+COQC BBminus2x4_Theorem.v
+Axioms:
+FunctionalExtensionality.functional_extensionality_dep :
+  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),
+  (forall x : A, f x = g x) -> f = g
+Axioms:
+FunctionalExtensionality.functional_extensionality_dep :
+  forall (A : Type) (B : A -> Type) (f g : forall x : A, B x),
+  (forall x : A, f x = g x) -> f = g
+COQNATIVE BBminus2x4_Theorem.vo
+make[1]: Leaving directory '/home/ubuntu/lanes/least/clean2/BBminus2x4'
+	Command being timed: "make -j8"
+	User time (seconds): 3621.47
+	System time (seconds): 75.92
+	Percent of CPU this job got: 713%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:37.87
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4445436
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 50
+	Minor (reclaiming a frame) page faults: 35235177
+	Voluntary context switches: 8001
+	Involuntary context switches: 6311
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 659056
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+exit 0 end Wed Nov  4 05:33:54 UTC 2026
