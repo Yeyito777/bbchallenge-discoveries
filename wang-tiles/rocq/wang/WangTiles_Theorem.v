@@ -10,10 +10,10 @@ Lemma geo_7 : geo_ok 7 = true. Proof. vm_compute. reflexivity. Qed.
 Lemma geo_9 : geo_ok 9 = true. Proof. vm_compute. reflexivity. Qed.
 
 (** These two run the checker on the stored certificates (wang/certs/upper/n{5,6}_D{7,9}_ringsym). *)
-Lemma cert_n5_D7_ok : check [] cert_n5_D7 = true.
+Lemma cert_n5_D7_ok : check [] [] cert_n5_D7 = true.
 Proof. Time native_cast_no_check (eq_refl true). Time Qed.
 
-Lemma cert_n6_D9_ok : check [] cert_n6_D9 = true.
+Lemma cert_n6_D9_ok : check [] [] cert_n6_D9 = true.
 Proof. Time native_cast_no_check (eq_refl true). Time Qed.
 
 Theorem plane_5 : plane_5_statement.

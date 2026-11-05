@@ -1,0 +1,14 @@
+n7/Job7_*.v
+n7/Check7_*.v
+n7/Tori7*.v
+n7/Jobs7.v
+n7work/
+*.vo
+*.vok
+*.vos
+*.glob
+.*.aux
+.coq-native/
+Makefile.coq*
+.lia.cache
+.nia.cache

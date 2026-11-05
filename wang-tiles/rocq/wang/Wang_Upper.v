@@ -59,32 +59,34 @@ Proof.
   apply existsb_exists. exists x. split; [exact Hin|apply list_eqb_refl].
 Qed.
 
-(** A family of certificates: shards 0..S-1 of one tree (one shard when S = 1), each passing
-    with the same list of reset prefixes [refs]. *)
-Definition certs_ok (refs : list (list nat)) (certs : list cert) (n D P Sh : nat) : Prop :=
-  (forall c, In c certs -> check refs c = true /\ c_n c = n /\ c_D c = D /\ c_reset c = P /\ c_shards c = Sh) /\
-  (forall s, s < Sh -> exists c, In c certs /\ c_shard c = s).
+(** A family of certificates: jobs 0..Sh-1 of one tree (one job when Sh = 1), each passing with the
+    same list of reset prefixes [refs] and the same job list [owners]: the reset node with index i
+    (in walk order) is walked by job [nth i owners 0] and by no other job. *)
+Definition certs_ok (refs : list (list nat)) (owners : list nat) (certs : list cert) (n D P Sh : nat) : Prop :=
+  (forall c, In c certs -> check refs owners c = true /\ c_n c = n /\ c_D c = D /\ c_reset c = P) /\
+  (forall s, s < Sh -> exists c, In c certs /\ c_shard c = s) /\
+  (forall i, nth i owners 0 < Sh).
 
 (** Every valid labelling of the square (labels by first appearance) gives a plane tiling.
-    By induction on the labelling read as a number: follow it in shard 0; if shard 0 leaves its
-    prefix to shard t, follow it in shard t, which walks that prefix, because both recorded the
-    same list of prefixes and a prefix appears in it once. *)
-Theorem labels_sound : forall refs certs n D P Sh, certs_ok refs certs n D P Sh -> NoDup refs -> 0 < Sh ->
+    By induction on the labelling read as a number: follow it in job 0; if job 0 leaves its prefix,
+    the reset node with index i, to job t = nth i owners 0, follow it in job t, which walks that
+    node, because both recorded the same list of prefixes and a prefix appears in it once. *)
+Theorem labels_sound : forall refs owners certs n D P Sh, certs_ok refs owners certs n D P Sh -> NoDup refs -> 0 < Sh ->
   geo_ok D = true ->
   forall L col, length L = D * D -> (forall x, In x L -> x < n) -> canon 0 L -> valid D col L -> plane_n n col.
 Proof.
-  intros refs certs n D P Sh [Hc Hcov] Hnd HS Hgeo L.
+  intros refs owners certs n D P Sh [Hc [Hcov Hown]] Hnd HS Hgeo L.
   induction L as [L IHL] using (well_founded_induction (well_founded_ltof _ (rank n))).
   intros col HL HLn HLc Hval.
   assert (Path : forall c, In c certs -> plane_n n col \/
-            exists i, nth_error refs i = Some (firstn P L) /\ Nat.eqb (S i mod Sh) (c_shard c) = false).
-  { intros c Hin. destruct (Hc c Hin) as [Hck [En [ED [EP ES]]]].
-    unfold check in Hck. repeat rewrite andb_true_iff in Hck. destruct Hck as [[[Hn _] _] Hrun].
+            exists i, nth_error refs i = Some (firstn P L) /\ Nat.eqb (nth i owners 0) (c_shard c) = false).
+  { intros c Hin. destruct (Hc c Hin) as [Hck [En [ED EP]]].
+    unfold check in Hck. repeat rewrite andb_true_iff in Hck. destruct Hck as [[Hn _] Hrun].
     apply Nat.leb_le in Hn.
-    destruct (run c) as [s'|] eqn:Er; [|discriminate]. apply andb_true_iff in Hrun as [_ Href].
+    destruct (run owners c) as [s'|] eqn:Er; [|discriminate]. apply andb_true_iff in Hrun as [_ Href].
     apply lists_eqb_eq in Href.
-    unfold run in Er. cbv zeta in Er. rewrite En, ED, EP, ES in Er. rewrite En in Hn.
-    destruct (walk_root n D P Sh (c_shard c) Hn Hgeo _ _ _ _ s' Er eq_refl (ClosedInv_empty _ _) L col HL HLn HLc Hval
+    unfold run in Er. cbv zeta in Er. rewrite En, ED, EP in Er. rewrite En in Hn.
+    destruct (walk_root n D P (c_shard c) owners Hn Hgeo _ _ _ _ s' Er eq_refl (ClosedInv_empty _ _) L col HL HLn HLc Hval
                 (fun L' col' A B C R V => IHL L' R col' A B C V)) as [Hp|[X [rest [Erec Esh]]]].
     - left. exact Hp.
     - right. exists (length rest). split; [|exact Esh].
@@ -92,7 +94,7 @@ Proof.
       rewrite nth_error_app2 by (rewrite length_rev; lia). rewrite length_rev, Nat.sub_diag. reflexivity. }
   destruct (Hcov 0 HS) as [c0 [Hin0 Hs0]].
   destruct (Path c0 Hin0) as [Hp|[i [Hi Hne]]]; [exact Hp|].
-  destruct (Hcov (S i mod Sh) (Nat.mod_upper_bound (S i) Sh ltac:(lia))) as [c1 [Hin1 Hs1]].
+  destruct (Hcov (nth i owners 0) (Hown i)) as [c1 [Hin1 Hs1]].
   destruct (Path c1 Hin1) as [Hp|[j [Hj Hne']]]; [exact Hp|].
   assert (Hij : i = j).
   { apply (proj1 (NoDup_nth_error refs) Hnd); [|congruence].
@@ -101,10 +103,10 @@ Proof.
 Qed.
 
 (** From labellings to lists of tiles. *)
-Theorem plane_from_certs : forall refs certs n D P Sh, certs_ok refs certs n D P Sh -> NoDup refs -> 0 < Sh ->
+Theorem plane_from_certs : forall refs owners certs n D P Sh, certs_ok refs owners certs n D P Sh -> NoDup refs -> 0 < Sh ->
   geo_ok D = true -> forall T, length T = n -> tiles_square T D -> tiles_plane T.
 Proof.
-  intros refs certs n D P Sh Hok Hnd HS Hgeo T HT [f [Hin [H1 H2]]].
+  intros refs owners certs n D P Sh Hok Hnd HS Hgeo T HT [f [Hin [H1 H2]]].
   set (col := fun i => nth i T dflt_tile).
   set (L0 := map (fun p => tindex (f (fst (cell D p)) (snd (cell D p))) T) (seq 0 (D * D))).
   assert (Hcell : forall p, p < D * D -> In (f (fst (cell D p)) (snd (cell D p))) T).
@@ -117,7 +119,7 @@ Proof.
   set (col' := fun y => col (linv rho L0 y)).
   assert (HlenL0 : length L0 = D * D) by (unfold L0; rewrite length_map, length_seq; reflexivity).
   assert (Hpl : plane_n n col').
-  { apply (labels_sound refs certs n D P Sh Hok Hnd HS Hgeo L col').
+  { apply (labels_sound refs owners certs n D P Sh Hok Hnd HS Hgeo L col').
     - unfold L. rewrite length_map. exact HlenL0.
     - intros x Hx. unfold L in Hx. apply in_map_iff in Hx as [z [<- Hz]]. apply Hrn. exact Hz.
     - exact Hcan.
@@ -133,16 +135,24 @@ Proof.
   intros y Hy. apply linv_lt; [lia|exact HL0].
 Qed.
 
-(** One certificate without resets or shards (n <= 6). *)
-Theorem check_plane : forall c, check [] c = true -> c_reset c = 0 -> c_shards c = 1 -> geo_ok (c_D c) = true ->
+(** One certificate without resets or jobs (n <= 6). *)
+Theorem check_plane : forall c, check [] [] c = true -> c_reset c = 0 -> c_shard c = 0 -> geo_ok (c_D c) = true ->
   forall T, length T = c_n c -> tiles_square T (c_D c) -> tiles_plane T.
 Proof.
-  intros c Hc HP HS Hgeo. apply (plane_from_certs [] [c] (c_n c) (c_D c) 0 1); [|constructor|lia|exact Hgeo].
-  split.
+  intros c Hc HP HS Hgeo. apply (plane_from_certs [] [] [c] (c_n c) (c_D c) 0 1); [|constructor|lia|exact Hgeo].
+  split; [|split].
   - intros c' [<-|[]]. auto.
-  - intros s Hs. exists c. split; [left; reflexivity|].
-    unfold check in Hc. repeat rewrite andb_true_iff in Hc. destruct Hc as [[[_ Hsh] _] _].
-    apply Nat.ltb_lt in Hsh. lia.
+  - intros s Hs. exists c. split; [left; reflexivity|lia].
+  - intros [|i]; simpl; lia.
+Qed.
+
+(** The job list: every owner names one of the Sh jobs. *)
+Lemma owners_bound : forall owners Sh, 0 < Sh -> forallb (fun o => Nat.ltb o Sh) owners = true ->
+  forall i, nth i owners 0 < Sh.
+Proof.
+  intros owners Sh HS E i. revert owners E. induction i as [|i IH]; intros [|o owners] E; simpl in *; try lia.
+  - apply andb_true_iff in E as [E _]. apply Nat.ltb_lt. exact E.
+  - apply andb_true_iff in E as [_ E]. apply IH. exact E.
 Qed.
 
 (** From "every n-tile set that tiles DxD tiles the plane" to the upper bound on scores. *)

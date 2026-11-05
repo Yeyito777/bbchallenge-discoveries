@@ -1,0 +1,27 @@
+Measurements for the version-4 n = 7 data (box, AMD EPYC 9R14, Nov 5 2026).
+
+Subtree sizes (logs/n7_subtrees/NNN.txt: counter, nodes, stored keys, relation pairs, token bytes, per subtree of
+v3 shard NNN). The 5,519 subtrees at position 10 hold 4,537,340,750 nodes; the two largest hold 302,926,221
+(counter 128) and 272,526,920 (counter 5314), the next 51,793,617. In subtree 128 one node carries most of the work
+down to depth ~170 (largest node at depth 24: 284.6M nodes; depth 169: 114.7M; depth 177: 30.5M), so no single
+deeper reset level splits it evenly; it stays one job.
+
+Repeat-skip keys: the v3 walk stores 650,653,451 keys below position 10; 34,482,571 of them are hit again later
+(5.3%), and only those get a remember mark. Subtree 128 alone stores 43.3M keys, of which 10.0M are hit.
+
+One normal job (job 10, 56,597,9xx nodes), alone on the box apart from other lanes:
+  plain bytes, 7 per integer   check 543.8 s, 1.40 GB
+  Huffman-coded stream         check 546.5 s, 1.37 GB
+  OCAMLRUNPARAM=s=4M / s=32M   543.6 s / 538.2 s (no gain, not used)
+
+Data: 322,547,170 tokens in 34,820,465 integers Huffman coded, against about 64M integers at 7 bytes per integer.
+Native compilation of array literals costs about 80 us per integer at 2^16 integers per file and overflows the
+native compiler's stack at 2^18 without `ulimit -s unlimited`, hence 2^16.
+
+recut: the first version stored full keys (64 bytes with its bookkeeping), walked each shard twice, and peaked at
+6.3 GB on shard 0 (780 s); with 128-bit fingerprints (24 bytes) it peaks at 2.4 GB (423 s), and walking once with
+the marks spliced in afterwards, 2.5 GB and 201 s. All three write byte-identical output (all 11,558 files of
+shards 0, 2 and 31 compared), and a full regeneration with the last one matched n7/MANIFEST.sha256: 239 s wall on
+19 processes, 2,550 s user + 30 s system.
+
+The C checker tools/c/check4.c passes all 72 jobs (same job trees as the build).

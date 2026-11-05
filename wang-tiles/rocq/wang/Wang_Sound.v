@@ -227,14 +227,15 @@ Proof.
 Qed.
 
 Section Sound.
-Variables (n D P shards shard : nat).
+Variables (n D P shard : nat).
+Variable owners : list nat.
 Hypothesis Hn : 1 <= n.
 Hypothesis Hgeo : geo_ok D = true.
 Variable tor : PArray.array (option (ctorus n)).
 Variables mask gate : int.
 
 Local Notation N := (D * D).
-Local Notation walkf := (walk n D (images D) tor mask gate (mk_tbl D) (centre_order D) shards shard).
+Local Notation walkf := (walk n D (images D) tor mask gate (mk_tbl D) (centre_order D) owners shard).
 Local Notation nodeb := (node_body n D tor mask gate (mk_tbl D) (centre_order D)).
 Local Notation nodea := (node_answer n D tor mask gate (mk_tbl D) (centre_order D)).
 Local Notation claimf := (claim n D tor mask gate (mk_tbl D) (centre_order D)).
@@ -359,6 +360,18 @@ Proof.
   destruct (PrimInt63.leb gate_flag _); [inversion E; subst; repeat split|].
   destruct (vis && _); [inversion E; subst; repeat split|].
   destruct (read_token (w_rd s)). inversion E; subst. repeat split.
+Qed.
+
+Lemma set_mark_same : forall s rd x, Same s (set_mark s rd x).
+Proof. intros. repeat split. Qed.
+
+Lemma mark_step_same : forall s ins s', mark_step s = (ins, s') -> Same s s'.
+Proof.
+  intros s ins s' E. unfold mark_step in E.
+  destruct (PrimInt63.eqb (w_mark s) max_int); [inversion E; subst; repeat split|].
+  destruct (PrimInt63.eqb (w_mark s) 1).
+  { destruct (read_token (w_rd s)). inversion E; subst. repeat split. }
+  destruct (PrimInt63.eqb (w_mark s) 0); inversion E; subst; repeat split.
 Qed.
 
 Lemma add_closed_pres : forall s h H V, Settled H V -> Pres s (add_closed s h H V).
@@ -689,10 +702,14 @@ Proof.
   generalize (skey_hash xx) as hh. intros hh E.
   destruct (seen_find n (w_seen s6) hh xx r); try discriminate.
   { inversion E; subst. apply Pres_FrameW; exact P6. }
-  destruct (rst_eqb (dec n xx) r) eqn:Ed; [|discriminate].
-  apply (FrameW_trans _ _ _ s6); [apply Pres_FrameW; exact P6|].
-  apply (FrameW_trans _ _ _ _ _ (seen_insert_frame pos pre s6 hh xx (stored_here pos pre k lm H V r HI Hpos Er xx Ed))).
-  apply (loop_frame w pos pre k lm H V _ _ s' HI Hpos (seq_labels k) Hw E).
+  destruct (mark_step s6) as [ins s7] eqn:Em.
+  pose proof (Same_Pres _ _ (mark_step_same _ _ _ Em)) as P7.
+  apply (FrameW_trans _ _ _ s7); [apply Pres_FrameW; exact (Pres_trans _ _ _ P6 P7)|].
+  destruct ins.
+  - destruct (rst_eqb (dec n xx) r) eqn:Ed; [|discriminate].
+    apply (FrameW_trans _ _ _ _ _ (seen_insert_frame pos pre s7 hh xx (stored_here pos pre k lm H V r HI Hpos Er xx Ed))).
+    apply (loop_frame w pos pre k lm H V _ _ s' HI Hpos (seq_labels k) Hw E).
+  - apply (loop_frame w pos pre k lm H V _ _ s' HI Hpos (seq_labels k) Hw E).
 Qed.
 
 Lemma clear_frame : forall pos pre s s', w_seen s' = PM.empty _ -> (ClosedInv (w_closed s) -> ClosedInv (w_closed s')) ->
@@ -706,8 +723,10 @@ Lemma walk_eq : forall fuel e tbl' sm k lm H V s,
   walkf (S fuel) (e :: tbl') sm k lm H V s =
   if sym_skip (images D) (e_key e) lm then Some s else
   if e_reset e then
-    (if Nat.eqb (List.length (w_rec (clear (push_rec s (map (lab lm) (e_pre e))))) mod shards) shard
-     then option_map clear (nodeb (walkf fuel tbl') e false k lm H V (clear (push_rec s (map (lab lm) (e_pre e)))))
+    (if Nat.eqb (nth (List.length (w_rec s)) owners 0) shard
+     then (let '(tok, rd) := read_token (w_rd (clear (push_rec s (map (lab lm) (e_pre e))))) in
+           option_map clear (nodeb (walkf fuel tbl') e false k lm H V
+             (set_mark (clear (push_rec s (map (lab lm) (e_pre e)))) rd tok)))
      else Some (clear (push_rec s (map (lab lm) (e_pre e)))))
   else nodeb (walkf fuel tbl') e sm k lm H V s.
 Proof. reflexivity. Qed.
@@ -734,10 +753,12 @@ Proof.
     assert (F0 : FrameW pos pre s s0).
     { apply clear_frame; [reflexivity|auto|]. exists [map (lab lm) (e_pre (mk_entry D P pos))]. reflexivity. }
     destruct (Nat.eqb _ shard).
-    + destruct (nodeb (walkf fuel (tbl (S pos))) _ false k lm H V s0) as [s1|] eqn:E1; [|discriminate].
+    + destruct (read_token (w_rd s0)) as [tok rd].
+      destruct (nodeb (walkf fuel (tbl (S pos))) _ false k lm H V (set_mark s0 rd tok)) as [s1|] eqn:E1; [|discriminate].
       cbn [option_map] in E. inversion E; subst. clear E.
       apply (FrameW_trans _ _ _ s0 _ F0).
-      apply (FrameW_trans _ _ _ s1); [apply (node_frame _ pos pre false k lm H V s0 s1 HI Hw E1)|].
+      apply (FrameW_trans _ _ _ (set_mark s0 rd tok)); [apply Pres_FrameW, Same_Pres, set_mark_same|].
+      apply (FrameW_trans _ _ _ s1); [apply (node_frame _ pos pre false k lm H V _ s1 HI Hw E1)|].
       apply clear_frame; [reflexivity|auto|exists []; reflexivity].
     + inversion E; subst. exact F0.
   - apply (node_frame _ pos pre sm k lm H V s s' HI Hw E).
@@ -762,7 +783,7 @@ Definition SeenInv (pos : nat) (m : PM.t (list skey)) : Prop :=
 
 (** L's prefix was recorded at a reset node that this shard leaves to another one. *)
 Definition Deferred (r : list (list nat)) : Prop :=
-  exists X rest, r = X ++ firstn P L :: rest /\ Nat.eqb (S (length rest) mod shards) shard = false.
+  exists X rest, r = X ++ firstn P L :: rest /\ Nat.eqb (nth (length rest) owners 0) shard = false.
 
 Lemma Deferred_app : forall Y r, Deferred r -> Deferred (Y ++ r).
 Proof. intros Y r [X [rest [E F]]]. exists (Y ++ X), rest. rewrite E, app_assoc. split; [reflexivity|exact F]. Qed.
@@ -1095,7 +1116,9 @@ Proof.
     apply pk_inj in E1. subst pos' k'.
     rewrite (ni_len _ _ _ _ _ _ HI') in Hlex. destruct Hlex as [Hlex|[_ Hlt]]; [|lia].
     apply (repeat_skip_plane pos k lm H V nu inv pre' lm' H' V' nu' inv'); auto.
-  - destruct (rst_eqb (dec n xx) r) eqn:Ed; [|discriminate].
+  - destruct (mark_step s6) as [ins s7] eqn:Em.
+    destruct (mark_step_same _ _ _ Em) as [A7 [B7 C7]].
+    assert (HC7 : ClosedInv (w_closed s7)) by (rewrite C7; exact HC6).
     assert (HLpos : nth pos L 0 <= k /\ nth pos L 0 < n).
     { split; [|apply Lnth_lt].
       pose proof HLc as HLc'. rewrite <- (firstn_skipn pos L) in HLc'. apply canon_app in HLc' as [_ HLc2].
@@ -1104,14 +1127,20 @@ Proof.
       rewrite length_firstn, Nat.min_l by lia. rewrite Nat.sub_diag.
       destruct (skipn pos L) eqn:Esk; [pose proof (length_skipn pos L); rewrite Esk in H0; simpl in H0; lia|].
       simpl in HLc2. simpl. tauto. }
-    pose proof (stored_here_eq pos (firstn pos L) k lm H V r HI Hpos Er xx Ed) as Hst.
-    refine (loop_path w pos k lm H V _ _ s' HI Hpos _ (seq_labels k) _ _ Hoff Hon E).
-    + exists 0. rewrite length_seq. split; [reflexivity|]. lia.
-    + exact HC6.
-    + intros x Hx. cbn [w_seen set_seen] in Hx. destruct (InSeen_add x xx (w_seen s6) hh Hx) as [->|H1].
-      * revert Hst. apply Stored_weaken. intros l ->. right. rewrite length_firstn, Nat.min_l by lia.
-        split; [reflexivity|lia].
-      * rewrite A6 in H1. apply (SeenInv_mono pos (w_seen s) HS x H1).
+    destruct ins.
+    + destruct (rst_eqb (dec n xx) r) eqn:Ed; [|discriminate].
+      pose proof (stored_here_eq pos (firstn pos L) k lm H V r HI Hpos Er xx Ed) as Hst.
+      refine (loop_path w pos k lm H V _ _ s' HI Hpos _ (seq_labels k) _ _ Hoff Hon E).
+      * exists 0. rewrite length_seq. split; [reflexivity|]. lia.
+      * exact HC7.
+      * intros x Hx. cbn [w_seen set_seen] in Hx. destruct (InSeen_add x xx (w_seen s7) hh Hx) as [->|H1].
+        -- revert Hst. apply Stored_weaken. intros l ->. right. rewrite length_firstn, Nat.min_l by lia.
+           split; [reflexivity|lia].
+        -- rewrite A7, A6 in H1. apply (SeenInv_mono pos (w_seen s) HS x H1).
+    + refine (loop_path w pos k lm H V _ _ s' HI Hpos _ (seq_labels k) _ _ Hoff Hon E).
+      * exists 0. rewrite length_seq. split; [reflexivity|]. lia.
+      * exact HC7.
+      * intros x Hx. rewrite A7, A6 in Hx. apply (SeenInv_mono pos (w_seen s) HS x Hx).
 Qed.
 
 Lemma walk_path : forall fuel pos sm k lm H V s s',
@@ -1158,7 +1187,8 @@ Proof.
   - assert (HPpos : P = pos) by (unfold is_reset in Ers; apply andb_true_iff in Ers as [_ Ers]; apply Nat.eqb_eq in Ers; lia).
     rewrite (pre_labels pos k lm H V HI ltac:(lia)) in E.
     destruct (Nat.eqb _ shard) eqn:Esh.
-    + destruct (nodeb (walkf fuel (tbl (S pos))) _ false k lm H V _) as [s1|] eqn:E1; [|discriminate].
+    + destruct (read_token _) as [tok rd].
+      destruct (nodeb (walkf fuel (tbl (S pos))) _ false k lm H V _) as [s1|] eqn:E1; [|discriminate].
       cbn [option_map] in E. injection E as Es. subst s'.
       cbn [w_rec clear]. refine (node_path _ pos false k lm H V _ s1 HI _ _ Hoff Hon E1); [exact HC|].
       intros x Hx. cbn [w_seen clear] in Hx. destruct (InSeen_empty x Hx).

@@ -284,28 +284,43 @@ Definition skey_hash (x : skey) : positive :=
 
 (** ** The certificate stream *)
 
-Record reader := mkRd { rd_chunks : list (list int); rd_cur : int; rd_left : int; rd_cnt : int }.
+(** The data are arrays of arrays of 2^16 integers (larger array literals overflow the stack of
+    the native compiler). *)
+Definition aget (t : array (array int)) (i : int) : int := (t.[i >> 16]).[i land 65535].
 
-Definition read_byte (r : reader) : int * reader :=
-  if rd_left r =? 0 then
-    match rd_chunks r with
-    | (w :: ws) :: cs => (w land 255, mkRd (ws :: cs) (w >> 8) 6 (rd_cnt r + 1))
-    | [] :: cs => match cs with
-                  | (w :: ws) :: cs' => (w land 255, mkRd (ws :: cs') (w >> 8) 6 (rd_cnt r + 1))
-                  | _ => (0, mkRd [] 0 0 (rd_cnt r + 1))
-                  end
-    | [] => (0, mkRd [] 0 0 (rd_cnt r + 1))
-    end
-  else (rd_cur r land 255, mkRd (rd_chunks r) (rd_cur r >> 8) (rd_left r - 1) (rd_cnt r + 1)).
+(** The certificate stream is the sequence of tokens of check_cert.py, coded with a canonical
+    Huffman code: 62 bits per integer, most significant first. [h_count.[L]] codes have length L
+    (L <= 40); [h_first.[L]] is the first of them and [h_index.[L]] its position in [h_syms]. How
+    the tokens are coded does not matter to the proof. *)
+Record htab := mkH { h_count : array int; h_first : array int; h_index : array int; h_syms : array (array int) }.
 
-Fixpoint read_token_aux (fuel : nat) (r : reader) (sh acc : int) : int * reader :=
+Record reader := mkRd { rd_tab : htab; rd_data : array (array int); rd_i : int; rd_bit : int; rd_cnt : int }.
+
+Fixpoint dec_loop (fuel : nat) (t : htab) (d : array (array int)) (i b L code : int) : int * int * int :=
   match fuel with
-  | O => (acc, r)
-  | S f => let '(b, r') := read_byte r in
-           let acc' := acc lor ((b land 127) << sh) in
-           if (b land 128) =? 0 then (acc', r') else read_token_aux f r' (sh + 7) acc'
+  | O => (0, i, b)
+  | S f =>
+    let bit := (aget d i >> (61 - b)) land 1 in
+    let '(i', b') := if b =? 61 then (i + 1, 0) else (i, b + 1) in
+    let c := (code << 1) lor bit in
+    let k := c - (h_first t).[L] in
+    if k <? (h_count t).[L] then (aget (h_syms t) ((h_index t).[L] + k), i', b')
+    else dec_loop f t d i' b' (L + 1) c
   end.
-Definition read_token (r : reader) : int * reader := read_token_aux 5 r 0 0.
+
+Definition read_token (r : reader) : int * reader :=
+  let '(tok, i, b) := dec_loop 40 (rd_tab r) (rd_data r) (rd_i r) (rd_bit r) 1 0 in
+  (tok, mkRd (rd_tab r) (rd_data r) i b (rd_cnt r + 1)).
+
+(** The decoding tables from the number of codes of each length. *)
+Fixpoint htab_loop (f : nat) (cnt : array int) (L code idx : int) (first index : array int) : array int * array int :=
+  match f with
+  | O => (first, index)
+  | S f' => htab_loop f' cnt (L + 1) ((code + cnt.[L]) << 1) (idx + cnt.[L]) first.[L <- code] index.[L <- idx]
+  end.
+
+Definition mk_htab (cnt : array int) (syms : array (array int)) : htab :=
+  let '(first, index) := htab_loop 40 cnt 1 0 0 (PArray.make 41 0) (PArray.make 41 0) in mkH cnt first index syms.
 
 (** ** Caches of the answers per relation pair (open addressing, no proof needed)
 
@@ -380,17 +395,29 @@ Definition mk_ctorus (n : nat) (g : grid) : option (ctorus n) :=
   | false => fun _ => None
   end eq_refl.
 
-Definition grid_of_ints (l : list int) : grid :=
-  match l with
-  | a :: b :: s :: cs => mkG (nat_of_int a) (nat_of_int b) (nat_of_int s) (map nat_of_int cs)
-  | _ => mkG 0 0 0 []
+(** The torus table: torus i starts at position [aget toff i] of [tdata], with one integer
+    a + 2^10 b + 2^20 s, then the a * b cells (row by row, labels below 8) packed 16 to an integer,
+    3 bits each, low bits first. Only the tori a job uses (the [ntused] entries of [tused]) are
+    built. *)
+Definition grid_at (tdata : array (array int)) (o : int) : grid :=
+  let w := aget tdata o in
+  let a := (w land 1023)%uint63 in let b := ((w >> 10) land 1023)%uint63 in
+  let cells := map (fun j => let x := int_of_nat j in
+                    nat_of_small ((aget tdata (o + 1 + (x >> 4)) >> (3 * (x land 15))) land 7)%uint63)
+                   (seq 0 (nat_of_int (a * b)%uint63)) in
+  mkG (nat_of_int a) (nat_of_int b) (nat_of_int ((w >> 20) land 1023)%uint63) cells.
+
+Fixpoint build_loop (n : nat) (f : nat) (tdata toff : array (array int)) (tused : array int) (i : int)
+  (arr : array (option (ctorus n))) : array (option (ctorus n)) :=
+  match f with
+  | O => arr
+  | S f' => build_loop n f' tdata toff tused (i + 1)%uint63
+              (arr.[tused.[i] <- mk_ctorus n (grid_at tdata (aget toff tused.[i]))])
   end.
 
-Definition build_tori (n : nat) (len : int) (tl : list (list (list int))) : array (option (ctorus n)) :=
-  fst (fold_left (fun acc chunk =>
-         fold_left (fun acc2 l => let '(arr, i) := acc2 in
-                      (arr.[i <- mk_ctorus n (grid_of_ints l)], (i + 1)%uint63)) chunk acc)
-       tl (PArray.make len None, 0%uint63)).
+Definition build_tori (n : nat) (len : int) (tdata toff : array (array int)) (tused : array int) (ntused : int)
+  : array (option (ctorus n)) :=
+  build_loop n (nat_of_int ntused) tdata toff tused 0%uint63 (PArray.make len None).
 
 Definition torus_ok {n} (tor : array (option (ctorus n))) (ans : int) (H V : rel) : bool :=
   if (ans <? 2)%uint63 then false else
@@ -406,26 +433,28 @@ Definition torus_ok {n} (tor : array (option (ctorus n))) (ans : int) (H V : rel
     newest first. *)
 Record wst := mkW {
   w_rd : reader; w_rel : cache; w_gate : cache; w_fin : cache; w_gen : int;
-  w_seen : PM.t (list skey); w_closed : PM.t (list (rel * rel)); w_rec : list (list nat) }.
+  w_seen : PM.t (list skey); w_closed : PM.t (list (rel * rel)); w_rec : list (list nat); w_mark : int }.
 
 Definition set_rd (s : wst) (r : reader) : wst :=
-  mkW r (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s).
+  mkW r (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s) (w_mark s).
 Definition set_rel (s : wst) (t : cache) (r : reader) : wst :=
-  mkW r t (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s).
+  mkW r t (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s) (w_mark s).
 Definition set_gate (s : wst) (t : cache) (r : reader) : wst :=
-  mkW r (w_rel s) t (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s).
+  mkW r (w_rel s) t (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s) (w_mark s).
 Definition set_fin (s : wst) (t : cache) (r : reader) : wst :=
-  mkW r (w_rel s) (w_gate s) t (w_gen s) (w_seen s) (w_closed s) (w_rec s).
+  mkW r (w_rel s) (w_gate s) t (w_gen s) (w_seen s) (w_closed s) (w_rec s) (w_mark s).
 Definition set_seen (s : wst) (m : PM.t (list skey)) : wst :=
-  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s) m (w_closed s) (w_rec s).
+  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s) m (w_closed s) (w_rec s) (w_mark s).
 Definition set_closed (s : wst) (m : PM.t (list (rel * rel))) : wst :=
-  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) m (w_rec s).
+  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) m (w_rec s) (w_mark s).
 Definition push_rec (s : wst) (p : list nat) : wst :=
-  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (p :: w_rec s).
-(** Clearing all tables, as check_cert.py does at a reset: a new cache generation, no seen keys.
-    Verified closed relations are kept. *)
+  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (p :: w_rec s) (w_mark s).
+Definition set_mark (s : wst) (r : reader) (x : int) : wst :=
+  mkW r (w_rel s) (w_gate s) (w_fin s) (w_gen s) (w_seen s) (w_closed s) (w_rec s) x.
+(** Clearing all tables, as check_cert.py does at a reset: a new cache generation, no seen keys, and
+    back to storing every repeat-skip key. Verified closed relations are kept. *)
 Definition clear (s : wst) : wst :=
-  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s + 1)%uint63 (PM.empty _) (w_closed s) (w_rec s).
+  mkW (w_rd s) (w_rel s) (w_gate s) (w_fin s) (w_gen s + 1)%uint63 (PM.empty _) (w_closed s) (w_rec s) max_int.
 
 Inductive seen_res := SHit | SBad | SMiss.
 
@@ -474,7 +503,8 @@ Variable tor : array (option (ctorus n)).
 Variable mask gate : int.
 Variable rtbl : PM.t (nat * nat * list (positive * nat)).
 Variable rorder : list (nat * nat * positive).
-Variable shards shard : nat.
+Variable owners : list nat.
+Variable shard : nat.
 
 Local Open Scope uint63_scope.
 
@@ -601,6 +631,16 @@ Definition node_answer (e : entry) (same : bool) (H V : rel) (s : wst) : option 
   match fresh_claim fr5 ans5 H V s5 with None => None | Some s6 => Some (ans5, s6)
   end end end end end end.
 
+(** Remember marks: [w_mark] is [max_int] above the reset level (every key is stored), else the
+    number of keys not hit in the table until the next one to store (0: none). A mark only decides
+    which keys are stored, so a wrong one can cost time or make the check fail, never pass. *)
+Definition mark_step (s : wst) : bool * wst :=
+  let m := w_mark s in
+  if (m =? max_int)%uint63 then (true, s)
+  else if (m =? 1)%uint63 then let '(tok, rd) := read_token (w_rd s) in (true, set_mark s rd tok)
+  else if (m =? 0)%uint63 then (false, s)
+  else (false, set_mark s (w_rd s) (m - 1)%uint63).
+
 (** One node: a leaf if its answer is a claim, which must hold; else the repeat skip, then
     the children. *)
 Definition node_body (w : bool -> nat -> PM.t nat -> rel -> rel -> wst -> option wst) (e : entry)
@@ -614,13 +654,17 @@ Definition node_body (w : bool -> nat -> PM.t nat -> rel -> rel -> wst -> option
   | SHit => Some s6
   | SBad => None
   | SMiss =>
-    if rst_eqb (dec n x) r
-    then loop_children w e k lm H V (seq 0 (S (Nat.min k (n - 1)))) (set_seen s6 (PM.add h (x :: bucket (w_seen s6) h) (w_seen s6)))
-    else None
+    let '(ins, s7) := mark_step s6 in
+    if ins then
+      (if rst_eqb (dec n x) r
+       then loop_children w e k lm H V (seq 0 (S (Nat.min k (n - 1)))) (set_seen s7 (PM.add h (x :: bucket (w_seen s7) h) (w_seen s7)))
+       else None)
+    else loop_children w e k lm H V (seq 0 (S (Nat.min k (n - 1)))) s7
   end end end.
 
 (** At a reset node the labels of cells 0..P-1 are recorded and the tables cleared; the node is
-    walked here only if its index (from 1) is [shard] modulo [shards]. *)
+    walked here only if the job list [owners] gives it to this job ([shard]). Then the first
+    remember mark is read. *)
 Fixpoint walk (fuel : nat) (tbl : list entry) (same : bool) (k : nat) (lm : PM.t nat) (H V : rel) (s : wst)
   {struct fuel} : option wst :=
   match fuel with O => None | S fuel' =>
@@ -628,8 +672,9 @@ Fixpoint walk (fuel : nat) (tbl : list entry) (same : bool) (k : nat) (lm : PM.t
   if sym_skip imgs (e_key e) lm then Some s else
   if e_reset e then
     let s0 := clear (push_rec s (map (lab lm) (e_pre e))) in
-    if Nat.eqb (List.length (w_rec s0) mod shards) shard
-    then option_map clear (node_body (walk fuel' tbl') e false k lm H V s0)
+    if Nat.eqb (nth (List.length (w_rec s)) owners 0) shard
+    then (let '(tok, rd) := read_token (w_rd s0) in
+          option_map clear (node_body (walk fuel' tbl') e false k lm H V (set_mark s0 rd tok)))
     else Some s0
   else node_body (walk fuel' tbl') e same k lm H V s
   end end.
@@ -638,18 +683,21 @@ End Walk.
 
 (** ** The checker *)
 
+(** A certificate: the job [c_shard] of a family sharing one list of reset prefixes and owners.
+    The coded token stream with its token count and code table, the torus table (shared by all
+    jobs) and the list of tori this job uses. *)
 Record cert := mkCert {
-  c_n : nat; c_D : nat; c_reset : nat; c_shards : nat; c_shard : nat; c_gate : int;
-  c_tree : list (list int); c_bytes : int;
-  c_ntori : int; c_tori : list (list (list int));
+  c_n : nat; c_D : nat; c_reset : nat; c_shard : nat; c_gate : int;
+  c_tree : array (array int); c_count : int; c_hcount : array int; c_hsyms : array (array int);
+  c_ntori : int; c_tdata : array (array int); c_toff : array (array int); c_tused : array int; c_ntused : int;
   c_cache : int }.
 
-Definition run (c : cert) : option wst :=
+Definition run (owners : list nat) (c : cert) : option wst :=
   let n := c_n c in let D := c_D c in
-  let tor := build_tori n (c_ntori c) (c_tori c) in
-  let s0 := mkW (mkRd (c_tree c) 0 0 0) (cmake (c_cache c)) (cmake (c_cache c)) (cmake (c_cache c)) 0%uint63
-                (PM.empty _) (PM.empty _) [] in
-  walk n D (images D) tor (c_cache c - 1)%uint63 (c_gate c) (mk_tbl D) (centre_order D) (c_shards c) (c_shard c)
+  let tor := build_tori n (c_ntori c) (c_tdata c) (c_toff c) (c_tused c) (c_ntused c) in
+  let s0 := mkW (mkRd (mk_htab (c_hcount c) (c_hsyms c)) (c_tree c) 0 0 0) (cmake (c_cache c)) (cmake (c_cache c)) (cmake (c_cache c)) 0%uint63
+                (PM.empty _) (PM.empty _) [] max_int in
+  walk n D (images D) tor (c_cache c - 1)%uint63 (c_gate c) (mk_tbl D) (centre_order D) owners (c_shard c)
        (S (S (D * D))) (table D (c_reset c)) false 0 (PM.empty _) (rempty n) (rempty n) s0.
 
 Fixpoint lists_eqb (x y : list (list nat)) : bool :=
@@ -659,11 +707,11 @@ Fixpoint lists_eqb (x y : list (list nat)) : bool :=
   | _, _ => false
   end.
 
-(** A shard passes: its walk succeeds, reads the whole certificate, and the prefixes it
-    recorded at reset nodes, oldest first, are exactly [refs]. *)
-Definition check (refs : list (list nat)) (c : cert) : bool :=
-  Nat.leb 1 (c_n c) && Nat.ltb (c_shard c) (c_shards c) && Nat.leb (c_reset c) (c_D c * c_D c) &&
-  match run c with
-  | Some s => (rd_cnt (w_rd s) =? c_bytes c)%uint63 && lists_eqb (rev (w_rec s)) refs
+(** A job passes: its walk succeeds, reads the whole certificate, and the prefixes it recorded at
+    reset nodes, oldest first, are exactly [refs]. *)
+Definition check (refs : list (list nat)) (owners : list nat) (c : cert) : bool :=
+  Nat.leb 1 (c_n c) && Nat.leb (c_reset c) (c_D c * c_D c) &&
+  match run owners c with
+  | Some s => (rd_cnt (w_rd s) =? c_count c)%uint63 && lists_eqb (rev (w_rec s)) refs
   | None => false
   end.
