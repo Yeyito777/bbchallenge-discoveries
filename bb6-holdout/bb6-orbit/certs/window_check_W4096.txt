@@ -1,0 +1,4 @@
+X 2166395068749415480536592098 candidates 8192
+merged to A(22,2166395068749415480946728222) after 28580 sweep-steps; lookback from B*: 126738884
+halted: a= 2166395068749415481073467386  b= 0  living 0
+all trajectories halted: 1

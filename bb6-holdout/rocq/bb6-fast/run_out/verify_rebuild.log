@@ -1,0 +1,568 @@
+Thu Nov  5 21:30:11 UTC 2026
+flambda: true
+Warning: No common logical root.
+Warning: In this case the -docroot option should be given.
+Warning: Otherwise the install-doc target is going to install files
+Warning: in orphan_BusyCoq_BB6_BF
+COQDEP VFILES
+COQC base/busycoq/LibTactics.v
+COQC base/theories/Num.v
+COQC theories/Ints.v
+File "./base/busycoq/LibTactics.v", line 131, characters 0-56:
+Warning: Automatically putting ltac_Mark in Prop even though it was declared
+with Type.
+Unset Automatic Proposition Inductives to prevent this (it will become the
+default in a future version).
+If you instead put ltac_Mark explicitly in Prop, set Dependent Proposition
+Eliminators around the declaration for full backwards compatibility.
+[automatic-prop-lowering,deprecated-since-8.20,deprecated,default]
+COQNATIVE theories/Ints.vo
+COQC theories/HLines.v
+COQNATIVE base/busycoq/LibTactics.vo
+COQC base/busycoq/Helper.v
+COQC base/busycoq/Eqb.v
+COQC base/busycoq/Pigeonhole.v
+File "./base/busycoq/Eqb.v", line 5, characters 0-58:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/Eqb.v", line 6, characters 0-59:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQNATIVE base/busycoq/Pigeonhole.vo
+COQNATIVE base/busycoq/Eqb.vo
+COQNATIVE base/busycoq/Helper.vo
+COQNATIVE base/theories/Num.vo
+COQC base/busycoq/HashTable.v
+File "./base/busycoq/HashTable.v", line 7, characters 0-32:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/HashTable.v", line 7, characters 0-32:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQNATIVE theories/HLines.vo
+COQC base/theories/Big.v
+COQNATIVE base/busycoq/HashTable.vo
+COQC base/busycoq/TM.v
+File "./base/busycoq/TM.v", line 9, characters 0-38:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/TM.v", line 9, characters 0-38:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQNATIVE base/theories/Big.vo
+COQC base/theories/Vec.v
+COQNATIVE base/busycoq/TM.vo
+COQC base/busycoq/Compute.v
+COQNATIVE base/theories/Vec.vo
+COQNATIVE base/busycoq/Compute.vo
+COQC base/busycoq/Flip.v
+COQNATIVE base/busycoq/Flip.vo
+COQC base/busycoq/Permute.v
+COQC base/busycoq/BB62.v
+File "./base/busycoq/BB62.v", line 5, characters 0-38:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/BB62.v", line 5, characters 0-38:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQNATIVE base/busycoq/BB62.vo
+COQNATIVE base/busycoq/Permute.vo
+COQC base/busycoq/Enumerate.v
+File "./base/busycoq/Enumerate.v", line 84, characters 10-22:
+Warning: Notation skipn_length is deprecated since 8.20.
+Use length_skipn instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./base/busycoq/Enumerate.v", line 84, characters 10-22:
+Warning: Notation skipn_length is deprecated since 8.20.
+Use length_skipn instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./base/busycoq/Enumerate.v", line 84, characters 10-22:
+Warning: Notation skipn_length is deprecated since 8.20.
+Use length_skipn instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+COQNATIVE base/busycoq/Enumerate.vo
+COQC base/busycoq/Individual.v
+File "./base/busycoq/Individual.v", line 136, characters 0-20:
+Warning: Use of “Require” inside a module is fragile. It is not recommended
+to use this functionality in finished proof scripts.
+[require-in-module,fragile,default]
+File "./base/busycoq/Individual.v", line 983, characters 0-11:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/Individual.v", line 983, characters 0-11:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/Individual.v", line 1076, characters 0-11:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./base/busycoq/Individual.v", line 1076, characters 0-11:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQNATIVE base/busycoq/Individual.vo
+COQC base/busycoq/Individual62.v
+File "./base/busycoq/Individual62.v", line 201, characters 12-27:
+Warning: Notation List.app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./base/busycoq/Individual62.v", line 201, characters 12-27:
+Warning: Notation List.app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./base/busycoq/Individual62.v", line 201, characters 12-27:
+Warning: Notation List.app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./base/busycoq/Individual62.v", line 565, characters 0-374:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+COQNATIVE base/busycoq/Individual62.vo
+COQC base/theories/Rules.v
+COQNATIVE base/theories/Rules.vo
+COQC base/theories/Map.v
+COQNATIVE base/theories/Map.vo
+COQC base/theories/Walk.v
+COQNATIVE base/theories/Walk.vo
+COQC base/theories/Step.v
+COQC theories/HCore.v
+COQNATIVE base/theories/Step.vo
+COQC base/theories/Sweep.v
+COQNATIVE base/theories/Sweep.vo
+COQC base/theories/Check.v
+COQNATIVE base/theories/Check.vo
+COQNATIVE theories/HCore.vo
+COQC theories/HAbs.v
+COQNATIVE theories/HAbs.vo
+COQC theories/HBand.v
+COQNATIVE theories/HBand.vo
+COQC theories/HTop.v
+COQNATIVE theories/HTop.vo
+While loading initial state:
+Warning: The native-compiler option is deprecated. To compile native files
+ahead of time, use the coqnative binary instead.
+[deprecated-native-compiler-option,deprecated-since-8.14,deprecated,default]
+ok J0047.v 21:51:17
+ok J0048.v 21:51:30
+ok J0046.v 21:51:35
+ok J0049.v 21:51:52
+ok J0045.v 21:52:18
+ok J0050.v 21:56:26
+ok J0044.v 21:56:39
+ok J0051.v 21:58:32
+ok J0079.v 22:04:44
+ok J0080.v 22:06:21
+ok J0081.v 22:08:12
+ok J0110.v 22:08:20
+ok J0085.v 22:09:30
+ok J0082.v 22:09:36
+ok J0109.v 22:10:05
+ok J0106.v 22:10:07
+ok J0112.v 22:10:28
+ok J0113.v 22:11:54
+ok J0111.v 22:12:12
+ok J0104.v 22:12:27
+ok J0083.v 22:12:59
+ok J0088.v 22:13:04
+ok J0105.v 22:13:04
+ok J0084.v 22:13:30
+ok J0086.v 22:14:14
+ok J0087.v 22:14:24
+ok J0107.v 22:14:39
+ok J0089.v 22:15:20
+ok J0114.v 22:15:32
+ok J0091.v 22:16:17
+ok J0108.v 22:16:35
+ok J0103.v 22:16:38
+ok J0092.v 22:17:08
+ok J0012.v 22:17:29
+ok J0090.v 22:17:47
+ok J0102.v 22:17:55
+ok J0025.v 22:17:55
+ok J0024.v 22:18:10
+ok J0026.v 22:18:35
+ok J0116.v 22:18:37
+ok J0117.v 22:19:11
+ok J0052.v 22:19:42
+ok J0100.v 22:19:49
+ok J0115.v 22:19:51
+ok J0027.v 22:19:53
+ok J0096.v 22:19:57
+ok J0093.v 22:19:57
+ok J0101.v 22:20:04
+ok J0095.v 22:20:12
+ok J0099.v 22:20:47
+ok J0023.v 22:21:18
+ok J0094.v 22:21:48
+ok J0098.v 22:21:52
+ok J0097.v 22:23:55
+ok J0028.v 22:24:14
+ok J0053.v 22:25:22
+ok J0021.v 22:25:32
+ok J0029.v 22:26:40
+ok J0022.v 22:27:20
+ok J0013.v 22:28:38
+ok J0118.v 22:29:19
+ok J0077.v 22:31:50
+ok J0078.v 22:32:29
+ok J0011.v 22:32:32
+ok J0034.v 22:32:56
+ok J0054.v 22:33:05
+ok J0120.v 22:33:09
+ok J0119.v 22:33:10
+ok J0005.v 22:33:41
+ok J0073.v 22:33:50
+ok J0035.v 22:34:01
+ok J0123.v 22:34:22
+ok J0030.v 22:34:34
+ok J0074.v 22:35:03
+ok J0124.v 22:35:17
+ok J0075.v 22:35:24
+ok J0076.v 22:35:46
+ok J0056.v 22:36:03
+ok J0122.v 22:36:20
+ok J0020.v 22:36:22
+ok J0121.v 22:36:29
+ok J0070.v 22:36:35
+ok J0072.v 22:36:41
+ok J0006.v 22:37:01
+ok J0125.v 22:37:18
+ok J0063.v 22:37:21
+ok J0033.v 22:37:36
+ok J0068.v 22:37:45
+ok J0071.v 22:37:54
+ok J0129.v 22:37:56
+ok J0019.v 22:38:04
+ok J0058.v 22:38:13
+ok J0007.v 22:38:16
+ok J0062.v 22:38:29
+ok J0061.v 22:38:45
+ok J0130.v 22:39:33
+ok J0043.v 22:39:34
+ok J0069.v 22:39:58
+ok J0060.v 22:40:07
+ok J0042.v 22:40:17
+ok J0018.v 22:40:27
+ok J0064.v 22:41:01
+ok J0175.v 22:41:22
+ok J0040.v 22:41:24
+ok J0065.v 22:41:32
+ok J0174.v 22:42:33
+ok J0038.v 22:42:38
+ok J0039.v 22:43:20
+ok J0173.v 22:43:57
+ok J0177.v 22:44:05
+ok J0178.v 22:44:20
+ok J0014.v 22:44:22
+ok J0066.v 22:44:23
+ok J0176.v 22:44:33
+ok J0067.v 22:44:40
+ok J0059.v 22:45:12
+ok J0180.v 22:45:27
+ok J0179.v 22:45:58
+ok J0181.v 22:46:39
+ok J0182.v 22:46:45
+ok J0183.v 22:46:47
+ok J0017.v 22:46:53
+ok J0031.v 22:46:57
+ok J0132.v 22:46:57
+ok J0032.v 22:47:12
+ok J0015.v 22:47:17
+ok J0037.v 22:47:29
+ok J0202.v 22:47:47
+ok J0199.v 22:47:51
+ok J0009.v 22:47:55
+ok J0131.v 22:48:00
+ok J0198.v 22:48:06
+ok J0201.v 22:48:11
+ok J0203.v 22:48:19
+ok J0200.v 22:48:47
+ok J0036.v 22:49:00
+ok J0184.v 22:49:09
+ok J0193.v 22:49:27
+ok J0133.v 22:49:35
+ok J0196.v 22:49:53
+ok J0197.v 22:50:00
+ok J0010.v 22:50:01
+ok J0192.v 22:50:08
+ok J0195.v 22:50:13
+ok J0194.v 22:50:32
+ok J0186.v 22:50:52
+ok J0003.v 22:51:07
+ok J0185.v 22:51:18
+ok J0128.v 22:51:21
+ok J0008.v 22:51:44
+ok J0191.v 22:51:54
+ok J0188.v 22:52:11
+ok J0001.v 22:52:18
+ok J0190.v 22:52:21
+ok J0187.v 22:52:36
+ok J0057.v 22:52:37
+ok J0126.v 22:53:01
+ok J0189.v 22:53:19
+ok J0127.v 22:53:47
+ok J0016.v 22:53:51
+ok J0172.v 22:55:30
+ok J0004.v 22:56:18
+ok J0135.v 22:57:19
+ok J0055.v 22:58:38
+ok J0136.v 22:58:45
+ok J0137.v 22:59:42
+ok J0204.v 23:01:25
+ok J0002.v 23:04:35
+ok J0134.v 23:05:47
+ok J0205.v 23:07:32
+ok J0206.v 23:08:37
+ok J0207.v 23:09:50
+ok J0208.v 23:10:08
+ok J0210.v 23:11:46
+ok J0211.v 23:12:04
+ok J0209.v 23:12:09
+ok J0156.v 23:12:43
+ok J0157.v 23:14:22
+ok J0151.v 23:14:43
+ok J0153.v 23:14:59
+ok J0212.v 23:15:07
+ok J0149.v 23:15:21
+ok J0141.v 23:15:23
+ok J0152.v 23:15:45
+ok J0165.v 23:16:11
+ok J0155.v 23:16:17
+ok J0142.v 23:16:30
+ok JHalt.v 23:16:32
+ok J0150.v 23:16:35
+ok J0160.v 23:16:55
+ok J0159.v 23:17:00
+ok J0164.v 23:17:18
+ok J0161.v 23:17:30
+ok J0158.v 23:17:35
+ok J0140.v 23:17:46
+ok J0154.v 23:18:02
+ok J0167.v 23:18:10
+ok J0163.v 23:18:18
+ok J0143.v 23:18:24
+ok J0168.v 23:18:26
+ok J0166.v 23:18:27
+ok J0162.v 23:18:34
+ok J0138.v 23:18:50
+ok J0139.v 23:19:40
+ok J0146.v 23:19:57
+ok J0148.v 23:20:17
+ok J0144.v 23:20:40
+ok J0169.v 23:21:34
+ok J0145.v 23:22:49
+ok J0170.v 23:23:02
+ok J0171.v 23:23:18
+ok J0041.v 23:23:21
+ok J0147.v 23:23:42
+ok J0000.v 23:24:35
+ok J0311.v 23:30:01
+ok J0213.v 23:30:52
+ok J0229.v 23:31:02
+ok J0222.v 23:31:13
+ok J0214.v 23:31:35
+ok J0220.v 23:31:44
+ok J0223.v 23:31:58
+ok J0221.v 23:31:59
+ok J0216.v 23:32:19
+ok J0219.v 23:32:27
+ok J0237.v 23:32:28
+ok J0215.v 23:32:39
+ok J0217.v 23:32:54
+ok J0238.v 23:33:06
+ok J0230.v 23:33:19
+ok J0224.v 23:33:31
+ok J0226.v 23:33:35
+ok J0239.v 23:33:49
+ok J0225.v 23:33:54
+ok J0228.v 23:34:03
+ok J0218.v 23:34:23
+ok J0227.v 23:34:43
+ok J0240.v 23:36:15
+ok J0231.v 23:36:31
+ok J0236.v 23:37:25
+ok J0232.v 23:37:57
+ok J0241.v 23:38:21
+ok J0242.v 23:38:43
+ok J0233.v 23:39:09
+ok J0253.v 23:39:19
+ok J0258.v 23:39:47
+ok J0255.v 23:39:56
+ok J0243.v 23:40:27
+ok J0259.v 23:40:31
+ok J0254.v 23:40:44
+ok J0235.v 23:40:47
+ok J0257.v 23:40:56
+ok J0234.v 23:41:23
+ok J0251.v 23:41:29
+ok J0252.v 23:41:29
+ok J0246.v 23:41:31
+ok J0247.v 23:42:03
+ok J0245.v 23:42:13
+ok J0244.v 23:42:23
+ok J0264.v 23:42:51
+ok J0249.v 23:43:09
+ok J0248.v 23:43:10
+ok J0250.v 23:43:14
+ok J0260.v 23:43:31
+ok J0265.v 23:44:51
+ok J0261.v 23:44:52
+ok J0262.v 23:44:56
+ok J0256.v 23:45:42
+ok J0263.v 23:46:01
+ok J0266.v 23:46:03
+ok J0269.v 23:47:14
+ok J0271.v 23:47:18
+ok J0270.v 23:47:29
+ok J0268.v 23:47:38
+ok J0277.v 23:47:41
+ok J0278.v 23:47:50
+ok J0279.v 23:47:50
+ok J0267.v 23:48:32
+ok J0276.v 23:48:37
+ok J0281.v 23:48:54
+ok J0280.v 23:48:55
+ok J0275.v 23:49:09
+ok J0282.v 23:49:25
+ok J0274.v 23:49:56
+ok J0283.v 23:50:04
+ok J0272.v 23:50:07
+ok J0273.v 23:50:41
+ok J0285.v 23:50:44
+ok J0287.v 23:51:42
+ok J0284.v 23:51:45
+ok J0286.v 23:51:56
+ok J0288.v 23:53:18
+ok J0289.v 23:55:12
+ok J0291.v 23:55:35
+ok J0290.v 23:56:47
+ok J0292.v 23:57:26
+ok J0294.v 23:57:52
+ok J0297.v 23:58:40
+ok J0295.v 23:59:15
+ok J0304.v 00:00:04
+ok J0293.v 00:00:18
+ok J0298.v 00:00:22
+ok J0296.v 00:00:39
+ok J0301.v 00:00:48
+ok J0303.v 00:01:16
+ok J0300.v 00:01:40
+ok J0299.v 00:01:44
+ok J0307.v 00:01:48
+ok J0302.v 00:01:54
+ok J0310.v 00:02:13
+ok J0306.v 00:02:36
+ok J0305.v 00:02:44
+ok J0309.v 00:05:07
+ok J0308.v 00:06:48
+Axioms:
+Uint63.sub_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.sub x y) =
+  (Uint63.to_Z x - Uint63.to_Z y) mod Uint63.wB
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.set :
+  forall A : Type, PArray.array A -> PrimInt63.int -> A -> PArray.array A
+Uint63.of_to_Z : forall x : PrimInt63.int, Uint63.of_Z (Uint63.to_Z x) = x
+Uint63.mulc_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z x * Uint63.to_Z y =
+  Uint63.to_Z (fst (PrimInt63.mulc x y)) * Uint63.wB +
+  Uint63.to_Z (snd (PrimInt63.mulc x y))
+PrimInt63.mulc :
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+Uint63.mul_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.mul x y) =
+  (Uint63.to_Z x * Uint63.to_Z y) mod Uint63.wB
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.make : forall A : Type, PrimInt63.int -> A -> PArray.array A
+Uint63.ltb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.ltb x y = true <-> Uint63.to_Z x < Uint63.to_Z y
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.lsr_spec :
+  forall x p : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.lsr x p) = Uint63.to_Z x / 2 ^ Uint63.to_Z p
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.lsl_spec :
+  forall x p : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.lsl x p) =
+  (Uint63.to_Z x * 2 ^ Uint63.to_Z p) mod Uint63.wB
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.lor_spec :
+  forall x y i : PrimInt63.int,
+  Uint63.bit (PrimInt63.lor x y) i = (Uint63.bit x i || Uint63.bit y i)%bool
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.length_set :
+  forall (A : Type) (t : PArray.array A) (i : PrimInt63.int) (a : A),
+  PArray.length (PArray.set t i a) = PArray.length t
+PArray.length : forall A : Type, PArray.array A -> PrimInt63.int
+Uint63.leb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.leb x y = true <-> Uint63.to_Z x <= Uint63.to_Z y
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.land_spec :
+  forall x y i : PrimInt63.int,
+  Uint63.bit (PrimInt63.land x y) i = (Uint63.bit x i && Uint63.bit y i)%bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PrimInt63.head0 : PrimInt63.int -> PrimInt63.int
+PArray.get_set_same :
+  forall (A : Type) (t : PArray.array A) (i : PrimInt63.int) (a : A),
+  PrimInt63.ltb i (PArray.length t) = true ->
+  PArray.get (PArray.set t i a) i = a
+PArray.get_set_other :
+  forall (A : Type) (t : PArray.array A) (i j : PrimInt63.int) (a : A),
+  i <> j -> PArray.get (PArray.set t i a) j = PArray.get t j
+PArray.get_out_of_bounds :
+  forall (A : Type) (t : PArray.array A) (i : PrimInt63.int),
+  PrimInt63.ltb i (PArray.length t) = false ->
+  PArray.get t i = PArray.default t
+PArray.get_make :
+  forall (A : Type) (a : A) (size i : PrimInt63.int),
+  PArray.get (PArray.make size a) i = a
+PArray.get : forall A : Type, PArray.array A -> PrimInt63.int -> A
+Uint63.eqb_refl : forall x : PrimInt63.int, PrimInt63.eqb x x = true
+Uint63.eqb_correct :
+  forall i j : PrimInt63.int, PrimInt63.eqb i j = true -> i = j
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.diveucl_21 :
+  PrimInt63.int ->
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+PrimInt63.diveucl :
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+PrimInt63.div : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PArray.default_set :
+  forall (A : Type) (t : PArray.array A) (i : PrimInt63.int) (a : A),
+  PArray.default (PArray.set t i a) = PArray.default t
+PArray.default : forall A : Type, PArray.array A -> A
+PArray.array : Type -> Type
+Uint63.add_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.add x y) =
+  (Uint63.to_Z x + Uint63.to_Z y) mod Uint63.wB
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+	Command being timed: "./run_all.sh 126"
+	User time (seconds): 943807.73
+	System time (seconds): 546.86
+	Percent of CPU this job got: 10048%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:36:38
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1592220
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 4015
+	Minor (reclaiming a frame) page faults: 146323319
+	Voluntary context switches: 46253
+	Involuntary context switches: 454725
+	Swaps: 0
+	File system inputs: 128
+	File system outputs: 566504
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+EXIT 0
+Fri Nov  6 00:06:50 UTC 2026

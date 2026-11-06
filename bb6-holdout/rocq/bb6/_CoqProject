@@ -1,0 +1,29 @@
+-arg "-native-compiler ondemand"
+-Q busycoq BusyCoq
+-Q theories BB6
+busycoq/LibTactics.v
+busycoq/Helper.v
+busycoq/HashTable.v
+busycoq/TM.v
+busycoq/Compute.v
+busycoq/Flip.v
+busycoq/Permute.v
+busycoq/Pigeonhole.v
+busycoq/Enumerate.v
+busycoq/Eqb.v
+busycoq/BB62.v
+busycoq/Individual.v
+busycoq/Individual62.v
+theories/Rules.v
+theories/Map.v
+theories/Num.v
+theories/Big.v
+theories/Vec.v
+theories/Walk.v
+theories/Step.v
+theories/Sweep.v
+theories/Check.v
+theories/Cert.v
+theories/Halts.v
+theories/Totals.v
+theories/Statement.v

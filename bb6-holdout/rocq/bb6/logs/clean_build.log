@@ -1,0 +1,267 @@
+coq_makefile -f _CoqProject -o Makefile.coq
+Warning: No common logical root.
+Warning: In this case the -docroot option should be given.
+Warning: Otherwise the install-doc target is going to install files
+Warning: in orphan_BusyCoq_BB6
+make -f Makefile.coq
+make[1]: Entering directory '/tmp/bb6clean'
+COQDEP VFILES
+COQC busycoq/LibTactics.v
+File "./busycoq/LibTactics.v", line 131, characters 0-56:
+Warning: Automatically putting ltac_Mark in Prop even though it was declared
+with Type.
+Unset Automatic Proposition Inductives to prevent this (it will become the
+default in a future version).
+If you instead put ltac_Mark explicitly in Prop, set Dependent Proposition
+Eliminators around the declaration for full backwards compatibility.
+[automatic-prop-lowering,deprecated-since-8.20,deprecated,default]
+COQC busycoq/Helper.v
+COQC busycoq/Eqb.v
+File "./busycoq/Eqb.v", line 5, characters 0-58:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/Eqb.v", line 6, characters 0-59:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQC busycoq/HashTable.v
+File "./busycoq/HashTable.v", line 7, characters 0-32:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/HashTable.v", line 7, characters 0-32:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQC busycoq/TM.v
+File "./busycoq/TM.v", line 9, characters 0-38:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/TM.v", line 9, characters 0-38:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQC busycoq/Compute.v
+COQC busycoq/Flip.v
+COQC busycoq/Permute.v
+COQC busycoq/Pigeonhole.v
+COQC busycoq/Enumerate.v
+File "./busycoq/Enumerate.v", line 84, characters 10-22:
+Warning: Notation skipn_length is deprecated since 8.20.
+Use length_skipn instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./busycoq/Enumerate.v", line 84, characters 10-22:
+Warning: Notation skipn_length is deprecated since 8.20.
+Use length_skipn instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./busycoq/Enumerate.v", line 84, characters 10-22:
+Warning: Notation skipn_length is deprecated since 8.20.
+Use length_skipn instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+COQC busycoq/BB62.v
+File "./busycoq/BB62.v", line 5, characters 0-38:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/BB62.v", line 5, characters 0-38:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQC busycoq/Individual.v
+File "./busycoq/Individual.v", line 136, characters 0-20:
+Warning: Use of “Require” inside a module is fragile. It is not recommended
+to use this functionality in finished proof scripts.
+[require-in-module,fragile,default]
+File "./busycoq/Individual.v", line 983, characters 0-11:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/Individual.v", line 983, characters 0-11:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/Individual.v", line 1076, characters 0-11:
+Warning: Notation "_ || _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+File "./busycoq/Individual.v", line 1076, characters 0-11:
+Warning: Notation "_ && _" was already used in scope bool_scope.
+[notation-overridden,parsing,default]
+COQC busycoq/Individual62.v
+File "./busycoq/Individual62.v", line 201, characters 12-27:
+Warning: Notation List.app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./busycoq/Individual62.v", line 201, characters 12-27:
+Warning: Notation List.app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./busycoq/Individual62.v", line 201, characters 12-27:
+Warning: Notation List.app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./busycoq/Individual62.v", line 565, characters 0-374:
+Warning: To avoid stack overflow, large numbers in nat are interpreted as
+applications of Nat.of_num_uint. [abstract-large-number,numbers,default]
+COQC theories/Rules.v
+COQC theories/Map.v
+COQC theories/Num.v
+COQC theories/Big.v
+COQC theories/Vec.v
+COQC theories/Walk.v
+COQC theories/Step.v
+COQC theories/Sweep.v
+COQC theories/Check.v
+COQC theories/Cert.v
+COQC theories/Halts.v
+COQC theories/Totals.v
+COQC theories/Statement.v
+make[1]: Leaving directory '/tmp/bb6clean'
+coqc -Q busycoq BusyCoq -Q theories BB6 demo/Axioms.v
+Axioms:
+Uint63.sub_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.sub x y) =
+  BinInt.Z.modulo (BinInt.Z.sub (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.of_to_Z : forall x : PrimInt63.int, Uint63.of_Z (Uint63.to_Z x) = x
+Uint63.mulc_spec :
+  forall x y : PrimInt63.int,
+  BinInt.Z.mul (Uint63.to_Z x) (Uint63.to_Z y) =
+  BinInt.Z.add
+    (BinInt.Z.mul (Uint63.to_Z (fst (PrimInt63.mulc x y))) Uint63.wB)
+    (Uint63.to_Z (snd (PrimInt63.mulc x y)))
+PrimInt63.mulc :
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+Uint63.mul_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.mul x y) =
+  BinInt.Z.modulo (BinInt.Z.mul (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.mod_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.mod x y) =
+  BinInt.Z.modulo (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.mod : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.ltb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.ltb x y = true <-> BinInt.Z.lt (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.lsr_spec :
+  forall x p : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.lsr x p) =
+  BinInt.Z.div (Uint63.to_Z x)
+    (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH)) (Uint63.to_Z p))
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.lsl_spec :
+  forall x p : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.lsl x p) =
+  BinInt.Z.modulo
+    (BinInt.Z.mul (Uint63.to_Z x)
+       (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH)) (Uint63.to_Z p)))
+    Uint63.wB
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.lor_spec :
+  forall x y i : PrimInt63.int,
+  Uint63.bit (PrimInt63.lor x y) i = (Uint63.bit x i || Uint63.bit y i)%bool
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.leb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.leb x y = true <-> BinInt.Z.le (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.land_spec :
+  forall x y i : PrimInt63.int,
+  Uint63.bit (PrimInt63.land x y) i = (Uint63.bit x i && Uint63.bit y i)%bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PrimInt63.head0 : PrimInt63.int -> PrimInt63.int
+Uint63.eqb_refl : forall x : PrimInt63.int, PrimInt63.eqb x x = true
+Uint63.eqb_correct :
+  forall i j : PrimInt63.int, PrimInt63.eqb i j = true -> i = j
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.diveucl_21 :
+  PrimInt63.int ->
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+PrimInt63.diveucl :
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+Uint63.div_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.div x y) =
+  BinInt.Z.div (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.div : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.add_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.add x y) =
+  BinInt.Z.modulo (BinInt.Z.add (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Axioms:
+Uint63.sub_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.sub x y) =
+  BinInt.Z.modulo (BinInt.Z.sub (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.of_to_Z : forall x : PrimInt63.int, Uint63.of_Z (Uint63.to_Z x) = x
+Uint63.mulc_spec :
+  forall x y : PrimInt63.int,
+  BinInt.Z.mul (Uint63.to_Z x) (Uint63.to_Z y) =
+  BinInt.Z.add
+    (BinInt.Z.mul (Uint63.to_Z (fst (PrimInt63.mulc x y))) Uint63.wB)
+    (Uint63.to_Z (snd (PrimInt63.mulc x y)))
+PrimInt63.mulc :
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+Uint63.mul_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.mul x y) =
+  BinInt.Z.modulo (BinInt.Z.mul (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.mod_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.mod x y) =
+  BinInt.Z.modulo (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.mod : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.ltb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.ltb x y = true <-> BinInt.Z.lt (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.lsr_spec :
+  forall x p : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.lsr x p) =
+  BinInt.Z.div (Uint63.to_Z x)
+    (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH)) (Uint63.to_Z p))
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.lsl_spec :
+  forall x p : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.lsl x p) =
+  BinInt.Z.modulo
+    (BinInt.Z.mul (Uint63.to_Z x)
+       (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH)) (Uint63.to_Z p)))
+    Uint63.wB
+PrimInt63.lsl : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.lor_spec :
+  forall x y i : PrimInt63.int,
+  Uint63.bit (PrimInt63.lor x y) i = (Uint63.bit x i || Uint63.bit y i)%bool
+PrimInt63.lor : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.leb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.leb x y = true <-> BinInt.Z.le (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.leb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.land_spec :
+  forall x y i : PrimInt63.int,
+  Uint63.bit (PrimInt63.land x y) i = (Uint63.bit x i && Uint63.bit y i)%bool
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PrimInt63.head0 : PrimInt63.int -> PrimInt63.int
+Uint63.eqb_refl : forall x : PrimInt63.int, PrimInt63.eqb x x = true
+Uint63.eqb_correct :
+  forall i j : PrimInt63.int, PrimInt63.eqb i j = true -> i = j
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.diveucl_21 :
+  PrimInt63.int ->
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+PrimInt63.diveucl :
+  PrimInt63.int -> PrimInt63.int -> PrimInt63.int * PrimInt63.int
+Uint63.div_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.div x y) =
+  BinInt.Z.div (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.div : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.add_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.add x y) =
+  BinInt.Z.modulo (BinInt.Z.add (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+
+real	2m8.698s
+user	2m1.555s
+sys	0m7.140s

@@ -1,6 +1,8 @@
 # Release assets
 
-Large files, kept out of the source tree and attached to the [v1 release](https://github.com/Yeyito777/bbchallenge-discoveries/releases/tag/v1). Each archive unpacks in place from the top of the repository: `tar --zstd -xf NAME.tar.zst -C .`. Check them first with `sha256sum -c SHA256SUMS`. Everything is under the MIT licence, Copyright (c) 2026 Yeyito (https://github.com/Yeyito777); each archive carries a copy of `LICENSE` at its top, the same file as in the repository.
+Large files, kept out of the source tree and attached to two GitHub releases. Each archive unpacks in place from the top of the repository: `tar --zstd -xf NAME.tar.zst -C .`. Check them first with `sha256sum -c SHA256SUMS`. Everything is under the MIT licence, Copyright (c) 2026 Yeyito (https://github.com/Yeyito777); each archive carries a copy of `LICENSE` at its top, the same file as in the repository.
+
+## [v1](https://github.com/Yeyito777/bbchallenge-discoveries/releases/tag/v1): Wang tiles and BB^-
 
 | Name | Bytes | SHA-256 | What it is | Used by |
 |---|---:|---|---|---|
@@ -11,3 +13,12 @@ Large files, kept out of the source tree and attached to the [v1 release](https:
 | `bbminus-verify-certs.tar.zst` | 147,092,215 | `41f02d2f652bc6accf48c041da717c94b065936bc16eb9e80e955c3a17226654` | 585,826 independent closed-set certificates (xz) | `least-verify/code/check/check_cert.py`. Not needed by the Rocq build; `rocq/data/unk_certs.xz` holds the 982 the proof uses |
 | `bbminus-verify-walk.tar.zst` | 73,059,683 | `45b0d6d39cd77a5870d3d3bc600fd7548eb8b2898972b7752ee35021e5b253ea` | Independent walk's class per machine, decider results per machine, blank-tape walk (xz) | Compared with the ledger; see `least-verify/VERIFY.md` |
 | `evidence-logs.tar.zst` | 29,987 | `11a485714044df2b7a5f731391e507f9c9b3df0baa426ecd4742cad46ce57d71` | Check logs cited by `RESULT.md`, `VERIFY.md` and `ROCQ.md` for the Wang tiles and BB^- results | Read only |
+
+## [v2](https://github.com/Yeyito777/bbchallenge-discoveries/releases/tag/v2): BB(6)
+
+| Name | Bytes | SHA-256 | What it is | Used by |
+|---|---:|---|---|---|
+| `bb6-chunks.tar.zst` | 5,462,701 | `500aba0a1fab06aa43c6f53acd79b4a01af15f8646e93f2cbb19e7b348e87f58` | 318,760 chunks of the BB(6) chain: `chunk_id seg_id z B z1 Y` | `rocq/bb6/cert/run_chain.sh`, `rocq/bb6/cert/assemble.py` |
+| `bb6-samples.tar.zst` | 6,888,071 | `cb604de911cd420dde1857a320cd8c1af3a51e4be1b1ffa35eda3a93aa378a56` | Reset states sampled about every 2^24 phases, per segment | `rocq/bb6/cert/mkchunks.py` (made `chunks.tsv`); replaying a stretch with `seg` |
+| `bb6-chain-results.tar.zst` | 16,003,789 | `f9128da8142ed2a8c73b98bdb8d3af3913e71480c2137278a92f72dcc724d4bc` | Output of the extracted checker for every chunk, plus `assemble.py` output | `rocq/bb6/cert/assemble.py` |
+| `evidence-logs-bb6.tar.zst` | 55,702 | `fcebcd2661839ba6b23fb38f64a2fb8ece3fb8d62aa8dec1f02d13ddf47fd2c4` | Check logs cited by the BB(6) `RESULT.md` | Read only |
