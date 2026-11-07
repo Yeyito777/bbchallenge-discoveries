@@ -20,7 +20,7 @@ Theorem bb6_holdout_steps : halts_in tm c0 n_steps.
 
 `n_steps` = 6448902863343978619509980365051027907909194602118636181048891434378153619188133 steps from blank to the configuration with no transition (busycoq's `halts_in`); counting the halting transition gives ...188134. It is in [`rocq/bb6-fast/proof_x/XFinalProof.v`](rocq/bb6-fast/proof_x/XFinalProof.v), with `n_steps` from `base/theories/Statement.v`. All 707 jobs passed in the kernel: 441 core-hours, 5 h 50 min on 128 cores running 80 jobs at a time, about 2.7 GB per job (about 55 hours and 22 GB on an 8-core desktop, scaled from that run). `Print Assumptions` lists 42 items, all Rocq primitives: `PrimInt63` (16), `Uint63` (14) and `PArray` (12) (`rocq/bb6-fast/run_out_x/XFinal.out`). The trust is the same as for the halt.
 
-**Independent rebuild of the exact-count proof: in progress.** It passed on its original run (all 707 jobs, final theorem checked). A second, from-scratch rebuild on a separate machine is running; this line will be updated when it finishes.
+**Independent rebuild of the exact-count proof: passed.** A second, from-scratch run of the published files on separate machines passed all 707 jobs. All 709 `.vo` files are byte-identical to the original run's and the assumptions are the same ([`rocq/bb6-fast/run_out_x/rebuild.txt`](rocq/bb6-fast/run_out_x/rebuild.txt)).
 
 Two earlier, independent computations of the count agree with the theorem: a Rocq-proved checker extracted to OCaml, which passed all 318,760 chunks in 2,722 core-hours ([`rocq/bb6/ROCQ.md`](rocq/bb6/ROCQ.md)), and the C traversal ([`bb6-orbit/RESULT.md`](bb6-orbit/RESULT.md)).
 
