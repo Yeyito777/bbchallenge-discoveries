@@ -27,7 +27,21 @@ On an 8-core desktop: about 34 hours and 13 GB in total, scaled from that run (n
 
 `run_all.sh` alone, from a clean checkout with the switch active, is the whole procedure: it builds `theories/`, runs every job and writes `proof/Final.vo` and `proof/Final.out`. No `.vo` file needs copying. Expected hashes are in `run_out/vo.sha256`.
 
-How far that has been tested: the 312 orbit jobs ran with the same `coqc` command but through a separate job script on the run box. `run_all.sh` itself, from clean, built `theories/`, ran the halt job and compiled `Final.v`, with the orbit jobs' `.vo` files taken from the run (their hashes are in `run_out/vo.sha256`); `HTop.vo`, `Cuts.vo`, `JHalt.vo` and `Final.vo` came out byte-identical. A full from-source run with `run_all.sh` alone, on a separate machine, then passed all 313 jobs and gave a byte-identical `Final.vo` (`run_out/verify_rebuild.log`, `run_out/verify_Final.out`).
+How far that has been tested: the 312 orbit jobs ran with the same `coqc` command but through a separate job script on the run box. `run_all.sh` itself, from clean, built `theories/`, ran the halt job and compiled `Final.v`, with the orbit jobs' `.vo` files taken from the run (their hashes are in `run_out/vo.sha256`); `HTop.vo`, `Cuts.vo`, `JHalt.vo` and `Final.vo` came out byte-identical. A full from-source run with `run_all.sh` alone has not finished yet.
+
+## The exact step count
+
+`proof_x/XFinalProof.v` proves `Theorem bb6_holdout_steps : halts_in tm c0 n_steps.`, with `n_steps` the constant `BB6.Statement.n_steps` from `base/theories/Statement.v`.
+
+**Status: done and checked.** All 707 jobs passed in the kernel on a 128-core c7a.32xlarge, running 80 in parallel because of memory: 441 core-hours and 5 h 50 min wall. Job times ran from 1 s to 90 min, median 36 min, at most about 2.7 GB per job. `Print Assumptions bb6_holdout_steps` lists 42 items, all `PrimInt63.*`, `Uint63.*` and `PArray.*` from the standard library (in `run_out_x/XFinal.out`). Job times, `.vo` hashes and the job `.vo` files are in `run_out_x/`.
+
+On an 8-core desktop: about 55 hours with 8 jobs at a time, needing about 22 GB (not measured on a desktop). Run fewer jobs at a time if memory is short.
+
+What is trusted is the same as for `halts` (below). The per-job counts and costs in `proof_x/XCuts.v` come from the old run and are only claims: each job checks its own.
+
+- `XCost`: exact cost polynomials in five 31-bit limbs. `XCore`, `XAbs`, `XBand`: block lemmas carrying application counts, moments and a cost polynomial, built on the `halts` proofs. `XTop`: the top recursion with counts exact and costs mod 2^315. `XFinal`: from an orbit with count `n_apps` and cost `R_total` mod 2^315 to `n_steps`, by the bound argument of `Halts.v`.
+- `gen/gen_xfinal.py` writes `proof_x/` from the cut points and the old run's per-chunk counts and costs (its ALLRES input is the per-chunk results of the `bb6-chain-results` asset with the segment column dropped; not shipped, 35 MB). Those constants are untrusted: they sum to `n_apps` and `R_total`, and a wrong one only makes its job fail.
+- `run_all_x.sh [N]` builds `_CoqProject.x` and runs the jobs, in the same way as `run_all.sh`. Each job needs about 2.7 GB, so choose N to fit memory (the run used 80 on 246 GB). A job counts as done only through its `.done` marker, so the script can be restarted after a lost machine. `JOBS=FROM-TO` runs a range, to split the work across machines.
 
 ## Layout
 

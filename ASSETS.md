@@ -1,6 +1,6 @@
 # Release assets
 
-Large files, kept out of the source tree and attached to two GitHub releases. Each archive unpacks in place from the top of the repository: `tar --zstd -xf NAME.tar.zst -C .`. Check them first with `sha256sum -c SHA256SUMS`. Everything is under the MIT licence, Copyright (c) 2026 Yeyito (https://github.com/Yeyito777); each archive carries a copy of `LICENSE` at its top, the same file as in the repository.
+Large files, kept out of the source tree and attached to three GitHub releases. Each archive unpacks in place from the top of the repository: `tar --zstd -xf NAME.tar.zst -C .`. Check them first with `sha256sum -c SHA256SUMS`. Everything is under the MIT licence, Copyright (c) 2026 Yeyito (https://github.com/Yeyito777); each archive carries a copy of `LICENSE` at its top, the same file as in the repository.
 
 ## [v1](https://github.com/Yeyito777/bbchallenge-discoveries/releases/tag/v1): Wang tiles and BB^-
 
@@ -22,3 +22,9 @@ Large files, kept out of the source tree and attached to two GitHub releases. Ea
 | `bb6-samples.tar.zst` | 6,888,071 | `cb604de911cd420dde1857a320cd8c1af3a51e4be1b1ffa35eda3a93aa378a56` | Reset states sampled about every 2^24 phases, per segment | `rocq/bb6/cert/mkchunks.py` (made `chunks.tsv`); replaying a stretch with `seg` |
 | `bb6-chain-results.tar.zst` | 16,003,789 | `f9128da8142ed2a8c73b98bdb8d3af3913e71480c2137278a92f72dcc724d4bc` | Output of the extracted checker for every chunk, plus `assemble.py` output | `rocq/bb6/cert/assemble.py` |
 | `evidence-logs-bb6.tar.zst` | 55,702 | `fcebcd2661839ba6b23fb38f64a2fb8ece3fb8d62aa8dec1f02d13ddf47fd2c4` | Check logs cited by the BB(6) `RESULT.md` | Read only |
+
+## [v3](https://github.com/Yeyito777/bbchallenge-discoveries/releases/tag/v3): BB(6) logs
+
+| Name | Bytes | SHA-256 | What it is | Used by |
+|---|---:|---|---|---|
+| `evidence-logs-v3.tar.zst` | 359,469 | `94f2d889efa365a179f84e329673f517161991086d697434b6aa7e82efe0a448` | Per-job logs of the BB(6) exact-count run (707 jobs); kernel job logs, done markers and per-job C and Rust step counts for `1RB---_0RC0RD_1LD1RB_0LE0LC_1RA0LF_1LD1LE` (523 jobs); that run's near-miss log | Read only; `bb6-holdout-2/kernel/sum_counts.py` sums the counts |

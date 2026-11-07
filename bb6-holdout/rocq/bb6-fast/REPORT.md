@@ -1,10 +1,12 @@
 # bb6-fast report
 
-> The C prototypes, benchmarks and unfinished exact-count files mentioned below are not included in this repository.
+> The C prototypes and benchmarks mentioned below are not included in this repository.
 
-Goal: a Rocq proof of the BB(6) holdout's halt with no extracted code, that fits a desktop. This covers `halts tm c0`. The exact-count theorem is separate work and not done yet.
+Goal: a Rocq proof of the BB(6) holdout's halt with no extracted code, that fits a desktop. Both `halts tm c0` and the exact count `halts_in tm c0 n_steps` are done.
 
-**Result:** `Theorem bb6_holdout_halts : halts tm c0.` is proved and checked. All 313 jobs passed in the kernel: 275 core-hours, 2 h 40 min on 128 cores, at most 1.55 GB per job. That is about 10x below the old checker's OCaml run (2,722 core-hours) and about 44x below running it in the kernel (about 12,000). On an 8-core desktop it scales to about 34 hours and 13 GB (not measured on a desktop).
+**Result (exact count):** `Theorem bb6_holdout_steps : halts_in tm c0 n_steps.` is proved and checked, for `Statement.v`'s `n_steps`. All 707 jobs passed in the kernel: 441 core-hours, 5 h 50 min on the 128-core box (80 jobs at a time), at most about 2.7 GB per job. The assumptions are the primitive ints and arrays only.
+
+**Result (halting):** `Theorem bb6_holdout_halts : halts tm c0.` is proved and checked. All 313 jobs passed in the kernel: 275 core-hours, 2 h 40 min on 128 cores, at most 1.55 GB per job. That is about 10x below the old checker's OCaml run (2,722 core-hours) and about 44x below running it in the kernel (about 12,000). On an 8-core desktop it scales to about 34 hours and 13 GB (not measured on a desktop).
 
 ## Costs (measured unless marked)
 
@@ -15,7 +17,8 @@ Goal: a Rocq proof of the BB(6) holdout's halt with no extracted code, that fits
 | Flat limb checker, kernel, flambda | 42 s/chunk | about 3,700 core-hours (extrapolated) |
 | Block lemmas with exact counts, kernel, flambda, no proofs | 4.3 s/chunk at 2^90.8 | about 400 core-hours (extrapolated) |
 | Block lemmas, `halts` only, proved, kernel, flambda | 3.1 s/chunk on average | **275 core-hours (run)** |
-| Same, kernel VM instead of `ocamlopt` | 238 s for one 16-chunk window, vs 40 s | about 1,500 core-hours (extrapolated) |
+| Block lemmas with exact counts, proved, kernel, flambda | 5.0 s/chunk on average | **441 core-hours (run)** |
+| `halts` only, kernel VM instead of `ocamlopt` | 238 s for one 16-chunk window, vs 40 s | about 1,500 core-hours (extrapolated) |
 
 Where the time goes in the run: the first job (the first 1024 chunks) took 117 min, jobs near chunk 200,000 took 14 to 21 min, the median was 57 min.
 
@@ -57,4 +60,20 @@ See `README.md`. In short: the Rocq kernel, `ocamlopt` under `native_compute` (t
 
 The exact-count theorem `halts_in tm c0 n_steps`. The regions, pull-backs, dominance, table and top recursion carry over. Block lemmas need to carry application counts and cost polynomials, with their proofs. The unproved prototype ran about 2x slower than `halts` only.
 
-In progress: cost arithmetic (`XCost.v`) and exact stops (`XCore.v`) are proved; the exact pair-and-child composition (`XAbs.v`) is being proved; the table, top recursion and final theorem are not started.
+Status: every part of the exact-count proof is proved, with no admits (`XCost`, `XCore`, `XAbs`, `XBand`, `XTop`, `XFinal`). The chain composes with the jobs stood in by axioms.
+
+Checked in the kernel against the old run, count and all five cost limbs: chunk 0; 16-chunk windows at chunks 2000, 120000, 200000 and 290000; the halting chunk. All match exactly.
+
+Speed:
+
+| Sample | Exact count (s) | `halts` only (s) |
+|---|---|---|
+| Chunk 0 | 110 | 30 |
+| 16 chunks at 2000 | 111 | 59 |
+| 16 chunks at 290000 | 84 | 38 |
+
+That is about 2x overall. The full run took 441 core-hours: 1.6x the `halts` run, which had used all 128 cores on the same type of box.
+
+Two speedups were tried:
+- Turning literal constants into machine-int lists: 952 to 7 s on a chunk.
+- A fixed five-limb multiply instead of the generic limb lists: 1.4 to 2x slower, because most values are one or two limbs. Reverted.

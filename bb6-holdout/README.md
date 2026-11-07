@@ -1,6 +1,8 @@
 # `1RB0LF_1RC1RA_0RD0RB_1LE---_0LA1LE_1RD1LA` halts
 
-**Independently rebuilt:** a full from-source run of `run_all.sh` alone on a separate 128-core AWS machine (Nov 5-6 2026) passed all 313 jobs with no failures in 2 h 37 min, peak 1.6 GB per job, and produced a byte-identical `Final.vo` with the same 41 assumptions (`rocq/bb6-fast/run_out/verify_rebuild.log`). That run was interrupted twice by spot reclaims; finished jobs were kept and resumed.
+Both the halt and the exact step count are closed Rocq theorems, proved in the kernel with no extracted code.
+
+**Independently rebuilt (the halt):** a full from-source run of `run_all.sh` alone on a separate 128-core AWS machine (Nov 5-6 2026) passed all 313 jobs with no failures in 2 h 37 min, peak 1.6 GB per job, and produced a byte-identical `Final.vo` with the same 41 assumptions (`rocq/bb6-fast/run_out/verify_rebuild.log`). That run was interrupted twice by spot reclaims; finished jobs were kept and resumed.
 
 The halt is a closed Rocq theorem, proved in the kernel with no extracted code:
 
@@ -10,7 +12,17 @@ Theorem bb6_holdout_halts : halts tm c0.
 
 with `tm` the machine and `c0` the blank tape, as defined in busycoq. It is in [`rocq/bb6-fast/proof/Final.v`](rocq/bb6-fast/proof/Final.v), checked with `native_compute`. All 313 jobs passed: 275 core-hours, 2 h 40 min on 128 cores, at most 1.55 GB per job (about 34 hours and 13 GB on an 8-core desktop, scaled from that run). `Print Assumptions` lists 41 items, all Rocq primitives: `PrimInt63` (16), `Uint63` (13) and `PArray` (12). Like Coq-BB5's proofs, it trusts `ocamlopt` through `native_compute`; the kernel VM avoids that at about 1,500 core-hours (extrapolated, not run). See [`rocq/bb6-fast/README.md`](rocq/bb6-fast/README.md).
 
-The exact step count, 6448902863343978619509980365051027907909194602118636181048891434378153619188134 counting the halting transition, comes from two independent computations that agree. One is an earlier Rocq-proved checker extracted to OCaml, which passed all 318,760 chunks in 2,722 core-hours ([`rocq/bb6/ROCQ.md`](rocq/bb6/ROCQ.md)). The other is the C traversal ([`bb6-orbit/RESULT.md`](bb6-orbit/RESULT.md)). That count also trusts the extraction, the OCaml compiler, `extract/main.ml` and `cert/assemble.py`. It isn't a closed theorem yet.
+The exact step count is a closed theorem too, proved the same way:
+
+```coq
+Theorem bb6_holdout_steps : halts_in tm c0 n_steps.
+```
+
+`n_steps` = 6448902863343978619509980365051027907909194602118636181048891434378153619188133 steps from blank to the configuration with no transition (busycoq's `halts_in`); counting the halting transition gives ...188134. It is in [`rocq/bb6-fast/proof_x/XFinalProof.v`](rocq/bb6-fast/proof_x/XFinalProof.v), with `n_steps` from `base/theories/Statement.v`. All 707 jobs passed in the kernel: 441 core-hours, 5 h 50 min on 128 cores running 80 jobs at a time, about 2.7 GB per job (about 55 hours and 22 GB on an 8-core desktop, scaled from that run). `Print Assumptions` lists 42 items, all Rocq primitives: `PrimInt63` (16), `Uint63` (14) and `PArray` (12) (`rocq/bb6-fast/run_out_x/XFinal.out`). The trust is the same as for the halt.
+
+**Independent rebuild of the exact-count proof: in progress.** It passed on its original run (all 707 jobs, final theorem checked). A second, from-scratch rebuild on a separate machine is running; this line will be updated when it finishes.
+
+Two earlier, independent computations of the count agree with the theorem: a Rocq-proved checker extracted to OCaml, which passed all 318,760 chunks in 2,722 core-hours ([`rocq/bb6/ROCQ.md`](rocq/bb6/ROCQ.md)), and the C traversal ([`bb6-orbit/RESULT.md`](bb6-orbit/RESULT.md)).
 
 ## Build the kernel proof
 
@@ -26,7 +38,18 @@ cd rocq/bb6-fast
 
 It builds `theories/`, runs the 313 jobs in `proof/` and compiles `proof/Final.v`, whose `Print Assumptions` goes to `proof/Final.out`. Expected: `run_out/proof/Final.out`, and the `.vo` hashes in `run_out/vo.sha256`. Per-job times and memory from the run are in `run_out/log/times.txt`. `gen/gen_final.py` regenerates `proof/` from `rocq/bb6/cert/chunks.tsv` (the `bb6-chunks` asset).
 
-## Build the extracted checker (exact count)
+## Build the exact-count proof
+
+Same switch as the kernel proof:
+
+```sh
+cd rocq/bb6-fast
+./run_all_x.sh 8      # 707 jobs, about 2.7 GB each: choose the number of parallel jobs to fit memory. Restartable. Needs no assets.
+```
+
+It builds `_CoqProject.x`, runs the jobs in `proof_x/` and compiles `proof_x/XFinalProof.v`, whose `Print Assumptions` goes to `proof_x/XFinal.out`. Expected: `run_out_x/XFinal.out`, the `.vo` hashes in `run_out_x/vo_x.sha256` and job times in `run_out_x/done_x.txt`. `gen/gen_xfinal.py` regenerates `proof_x/`; its constants only choose what to check, and a wrong one makes its job fail.
+
+## Build the extracted checker (an independent count)
 
 Needs Coq 8.20.1. The checker build also needs OCaml's `coq-core` package.
 
@@ -68,6 +91,6 @@ MIT, code and data alike: [`LICENSE`](LICENSE), Copyright (c) 2026 Yeyito (https
 
 ## Assets
 
-`bb6-chunks` (the chunk list), `bb6-samples` (reset states sampled about every 2^24 phases, input to `cert/mkchunks.py`, usable for replaying any stretch), `bb6-chain-results` (the checker's output per chunk). `evidence-logs-bb6` (check logs). All in the v2 release.
+`bb6-chunks` (the chunk list), `bb6-samples` (reset states sampled about every 2^24 phases, input to `cert/mkchunks.py`, usable for replaying any stretch), `bb6-chain-results` (the checker's output per chunk). `evidence-logs-bb6` (check logs). All in the v2 release. The per-job logs of the exact-count run are in `evidence-logs-v3`, in the v3 release.
 
 Scripts that only drove runs on our machines (`burst*`, `monitor.sh`, `run_worker.sh`) are left out.
