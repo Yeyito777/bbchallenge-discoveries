@@ -1,0 +1,44 @@
+Independent rebuild of the c273 kernel proof, 2026-11-07
+
+Machine: AWS m7a.32xlarge (128 cores), a separate machine from the original run. Rocq 8.20.1, native compiler, no flambda.
+Sources: the 542 .v files of kernel/ (proof files, jobs/, busycoq/) as published; the sha256 of each matches this repo.
+Run: ./run_all.sh setup, ./run_all.sh jobs 120, ./run_all.sh chain, 07:06Z to 11:58Z, sharing the machine with another rebuild.
+Result: all 523 jobs passed, Chain.v and Halts273.v compiled.
+
+sha256 of the final files, identical to the original run's:
+51548ae0df4b25525e126ee5f94b9ddd6551c8ea704859cb343bbb35c99c3ede  Chain.vo
+0c07c198c1e4db1dcba10d7a33884c49965f1ab3b95bdd83eeb4732f3718d5af  Halts273.vo
+
+Check (CheckMine.v: From BusyCoq Require Import Individual62. From H Require Halts273. Check Halts273.c273_halts. Print Assumptions Halts273.c273_halts.):
+
+Halts273.c273_halts
+     : halts Rules273.tm c0
+Axioms:
+Uint63.sub_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.sub x y) =
+  BinInt.Z.modulo (BinInt.Z.sub (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.sub : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.mul_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.mul x y) =
+  BinInt.Z.modulo (BinInt.Z.mul (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.mul : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.ltb_spec :
+  forall x y : PrimInt63.int,
+  PrimInt63.ltb x y = true <-> BinInt.Z.lt (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.ltb : PrimInt63.int -> PrimInt63.int -> bool
+PrimInt63.lsr : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.land : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+PrimInt63.int : Set
+PrimInt63.eqb : PrimInt63.int -> PrimInt63.int -> bool
+Uint63.div_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.div x y) =
+  BinInt.Z.div (Uint63.to_Z x) (Uint63.to_Z y)
+PrimInt63.div : PrimInt63.int -> PrimInt63.int -> PrimInt63.int
+Uint63.add_spec :
+  forall x y : PrimInt63.int,
+  Uint63.to_Z (PrimInt63.add x y) =
+  BinInt.Z.modulo (BinInt.Z.add (Uint63.to_Z x) (Uint63.to_Z y)) Uint63.wB
+PrimInt63.add : PrimInt63.int -> PrimInt63.int -> PrimInt63.int

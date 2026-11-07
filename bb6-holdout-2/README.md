@@ -1,6 +1,6 @@
 # `1RB---_0RC0RD_1LD1RB_0LE0LC_1RA0LF_1LD1LE` halts
 
-**Independent rebuild: in progress.** The proof passed on its original run (all 523 jobs, final theorem checked). A second, from-scratch rebuild on a separate machine is running; this line will be updated when it finishes.
+**Independent rebuild: passed.** A second, from-scratch run of the published files on a separate machine passed all 523 jobs, with byte-identical `Chain.vo` and `Halts273.vo` and the same assumptions ([`kernel/final/rebuild.txt`](kernel/final/rebuild.txt)).
 
 This BB(6) holdout, the "skewed tent map" machine on the wiki, halts from the blank tape. It is the only machine in its equivalence class. The halt is a closed Rocq theorem, proved in the kernel:
 
